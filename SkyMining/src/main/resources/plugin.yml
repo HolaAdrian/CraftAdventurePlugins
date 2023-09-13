@@ -1,0 +1,15 @@
+name: SkyMining
+version: '${project.version}'
+main: me.adrian.skymining.SkyMining
+api-version: '1.19'
+commands:
+  restoregamerules:
+    description: Setzte alle Gamerules wieder auf den Basiswert!
+  restorevillager:
+    description: Respawn all the villagers.
+  lobby:
+    description: Go to the lobby
+    aliases:
+      - l
+      - hub
+
