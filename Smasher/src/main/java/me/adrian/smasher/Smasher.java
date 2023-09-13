@@ -1,5 +1,6 @@
 package me.adrian.smasher;
 
+import me.adrian.smasher.Utility.Cooldown;
 import me.adrian.smasher.Utility.Importer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -66,6 +67,8 @@ public final class Smasher extends JavaPlugin {
         Importer.ImportCommands(this);
         Importer.ImportPluginChannels(this);
         Importer.ImportListeners(Bukkit.getPluginManager(), this);
+
+        Cooldown.StatSchedualar(this);
 
     }
 

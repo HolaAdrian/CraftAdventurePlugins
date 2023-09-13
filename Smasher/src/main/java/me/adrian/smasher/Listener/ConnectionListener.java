@@ -19,7 +19,7 @@ import java.util.UUID;
 
 public class ConnectionListener implements Listener {
 
-    public static String lastonestanding;
+    public static String lastonestanding = "Niemand";
 
 
     @EventHandler
@@ -30,7 +30,21 @@ public class ConnectionListener implements Listener {
         event.setJoinMessage("");
         Player player = event.getPlayer();
 
-        Smasher.cooldown.put(player.getUniqueId(), 0);
+        UUID uuid = player.getUniqueId();
+        Smasher.cooldown.put(player.getUniqueId(), 1);
+        if (Smasher.playerlanguage.containsKey(uuid)){
+            if (Smasher.playerlanguage.get(uuid).equals("de")){
+                player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
+
+            }
+            else if (Smasher.playerlanguage.get(uuid).equals("en")){
+                player.sendActionBar(ChatColor.GREEN + "No more cooldown!");
+
+            }
+        }
+        else{
+            player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
+        }
 
         Smasher.lives.put(player.getUniqueId(), 10);
         UUID uniqueId = player.getUniqueId();
@@ -103,7 +117,8 @@ public class ConnectionListener implements Listener {
                         p.sendMessage(ChatColor.GOLD + lastonestanding + " has won this round of smasher!");                                }
                 }
                 else{
-                    p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");                            }
+                    p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");
+                }
             }
 
             Bukkit.getScheduler().scheduleSyncDelayedTask(Smasher.main, new Runnable() {

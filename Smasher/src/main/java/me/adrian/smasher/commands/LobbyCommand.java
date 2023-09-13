@@ -18,7 +18,7 @@ import java.util.UUID;
 
 public class LobbyCommand implements CommandExecutor {
 
-    public static String lastonestanding;
+    public static String lastonestanding = "Niemand";
 
 
     @Override

@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class PlayerDeathListener implements Listener {
 
-    public static String lastonestanding;
+    public static String lastonestanding = "Niemand";
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {

@@ -5,6 +5,8 @@ me\adrian\smasher\Listener\RespawnListener.class
 me\adrian\smasher\Utility\EndRound.class
 me\adrian\smasher\Utility\ItemGetter.class
 me\adrian\smasher\commands\LobbyCommand$1.class
+me\adrian\smasher\Utility\Cooldown.class
+me\adrian\smasher\Utility\Cooldown$1.class
 me\adrian\smasher\Listener\NoShitListener.class
 me\adrian\smasher\Listener\PlayerDeathListener.class
 me\adrian\smasher\Smasher.class

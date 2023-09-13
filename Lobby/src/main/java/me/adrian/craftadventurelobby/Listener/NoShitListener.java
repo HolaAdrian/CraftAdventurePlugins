@@ -37,6 +37,7 @@ public class NoShitListener implements Listener {
                 else if (event.getCurrentItem().getType().equals(Material.BLAZE_ROD)){
 
                     if (Lobby.smasherrunning == false){
+
                         event.setCancelled(true);
                         Lobby.sendServer(player, "smasher");
                         Lobby.playersinsmasher.add(player.getUniqueId());
