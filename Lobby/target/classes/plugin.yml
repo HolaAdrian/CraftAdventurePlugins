@@ -1,0 +1,11 @@
+name: Lobby
+version: '1.0'
+main: me.adrian.craftadventurelobby.Lobby
+api-version: '1.19'
+commands:
+  spawn:
+    description: Teleport to the lobby's spawn
+    aliases:
+      - s
+  setspawn:
+    description: Set the Lobby's spawn
