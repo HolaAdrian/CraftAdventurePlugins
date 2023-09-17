@@ -3,8 +3,10 @@ package me.adrian.serveradrianbungee;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import me.adrian.serveradrianbungee.commands.creditscommand;
 import me.adrian.serveradrianbungee.commands.kitcommand;
 import me.adrian.serveradrianbungee.commands.lobbycommand;
+import me.adrian.serveradrianbungee.commands.versioncommand;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -96,9 +98,12 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
 
         getProxy().registerChannel("bungeecord:language");
         getProxy().registerChannel("bungeecord:kit");
+        getProxy().registerChannel("between:smasherlobby");
         getProxy().getPluginManager().registerListener(this, this);
         getProxy().getPluginManager().registerCommand(this, new lobbycommand());
         getProxy().getPluginManager().registerCommand(this, new kitcommand());
+        getProxy().getPluginManager().registerCommand(this, new creditscommand());
+        getProxy().getPluginManager().registerCommand(this, new versioncommand());
 
 
 
@@ -196,6 +201,18 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPluginMessageReceived(PluginMessageEvent event) {
+        if (event.getTag().equals("between:smasherlobby")){
+            System.out.println("test 1 SayEndRound Zeile 20");
+            ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
+            String message = in.readUTF();
+            if (message.equals("resume")){
+                System.out.println("test 2 SayEndRound Zeile 20");
+                ServerInfo lobby = getProxy().getServerInfo("lobby");
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                out.writeUTF("resume");
+                lobby.sendData("between:smasherlobby", out.toByteArray());
+            }
+        }
 
         if (event.getTag().equals("bungeecord:language")){
             ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());

@@ -24,37 +24,7 @@ public class NoShitListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getCurrentItem() == null){
-            return;
-        }
-        if (event.getCurrentItem().getItemMeta() != null){
-            if (event.getWhoClicked() instanceof Player){
-                Player player = (Player) event.getWhoClicked();
-                if (event.getCurrentItem().getType().equals(Material.NETHERITE_PICKAXE)){
-                    event.setCancelled(true);
-                    Lobby.sendServer(player, "skyminer");
-                }
-                else if (event.getCurrentItem().getType().equals(Material.BLAZE_ROD)){
-
-                    if (Lobby.smasherrunning == false){
-
-                        event.setCancelled(true);
-                        Lobby.sendServer(player, "smasher");
-                        Lobby.playersinsmasher.add(player.getUniqueId());
-                        Lobby.smasherrunning = true;
-                    }
-                    else {
-
-                        player.sendMessage(ChatColor.RED + "Run");
-                        event.setCancelled(true);
-                    }
-
-
-                }
-            }
-
-
-        }
+        event.setCancelled(true);
     }
 
 

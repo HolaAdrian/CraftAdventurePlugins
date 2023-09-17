@@ -17,8 +17,6 @@ public class Cooldown {
                 for (UUID uuid : Smasher.cooldown.keySet()) {
                     Integer cooldown = Smasher.cooldown.get(uuid);
 
-                    System.out.println(cooldown);
-
                     if (cooldown < 2){
                         if (Bukkit.getPlayer(uuid) != null){
                             Player player = Bukkit.getPlayer(uuid);

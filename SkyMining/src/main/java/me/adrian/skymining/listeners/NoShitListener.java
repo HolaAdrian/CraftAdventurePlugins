@@ -48,8 +48,11 @@ public class NoShitListener implements Listener {
 
     @EventHandler
     public void onPrepareItemCraft(PrepareItemCraftEvent event) {
-        event.getRecipe().getResult().setType(Material.AIR);
-        event.getInventory().setResult(new ItemStack(Material.AIR));
+        if (event.getRecipe().getResult() != null){
+            event.getRecipe().getResult().setType(Material.AIR);
+            event.getInventory().setResult(new ItemStack(Material.AIR));
+        }
+
     }
 
     @EventHandler
@@ -62,5 +65,23 @@ public class NoShitListener implements Listener {
 
 
 
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getCurrentItem() != null){
+            if (event.getCurrentItem().getType().equals(Material.BLAZE_ROD)){
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onInventoryMoveItem(InventoryDragEvent event) {
+        if (event.getCursor().getType() != null){
+            if (event.getCursor().getType().equals(Material.BLAZE_ROD)){
+                event.setCancelled(true);
+            }
+        }
     }
 }

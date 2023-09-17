@@ -28,9 +28,9 @@ public class PlayerInteractListener implements Listener {
                     if (Smasher.cooldown.get(player.getUniqueId()) != 0){
                         return;
                     }
-                    Vector knockbackVector = new Vector(0, 3, 0);
+                    Vector knockbackVector = new Vector(0, 2.35, 0);
                     player.setVelocity(knockbackVector);
-                    Smasher.cooldown.put(player.getUniqueId(), 10);
+                    Smasher.cooldown.put(player.getUniqueId(), 25);
                 }
             }
 

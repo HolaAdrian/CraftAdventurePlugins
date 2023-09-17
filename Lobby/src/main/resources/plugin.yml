@@ -9,3 +9,7 @@ commands:
       - s
   setspawn:
     description: Set the Lobby's spawn
+  smasherresume:
+    aliases:
+      - resumesmasher
+    permission: smasher.resume

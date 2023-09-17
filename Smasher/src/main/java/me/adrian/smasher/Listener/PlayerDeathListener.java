@@ -36,6 +36,7 @@ public class PlayerDeathListener implements Listener {
 
 
                     if (Smasher.playersalive < 2){
+                        EndRound.SayLobbyEndRound();
 
                         for (UUID playingPlayer : Smasher.playingPlayers) {
                             Player player1 = Bukkit.getPlayer(playingPlayer);
@@ -49,6 +50,7 @@ public class PlayerDeathListener implements Listener {
 
 
                         for (Player p: Bukkit.getOnlinePlayers()){
+                            p.setGameMode(GameMode.SPECTATOR);
                             if (Smasher.playerlanguage.containsKey(p.getUniqueId())){
                                 if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")){
                                     p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");

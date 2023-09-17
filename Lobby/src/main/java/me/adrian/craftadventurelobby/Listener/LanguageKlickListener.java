@@ -3,15 +3,11 @@ package me.adrian.craftadventurelobby.Listener;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.adrian.craftadventurelobby.Lobby;
-import me.adrian.craftadventurelobby.Utility.ItemGetter;
-import me.adrian.craftadventurelobby.Utility.Sayer;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class LanguageKlickListener implements Listener {
 
@@ -46,17 +42,6 @@ public class LanguageKlickListener implements Listener {
 
                         Lobby.playerlanguage.put(player.getUniqueId(), "de");
 
-                        SCHEDU = Bukkit.getScheduler().scheduleSyncRepeatingTask(Lobby.main, new Runnable() {
-                            @Override
-                            public void run() {
-                                times ++;
-                                if (times>1){
-                                    player.getInventory().setItem(2, ItemGetter.Compass(player));
-                                    Bukkit.getScheduler().cancelTask(SCHEDU);
-                                }
-                            }
-                        }, 0, 10);
-
 
 
 
@@ -79,25 +64,6 @@ public class LanguageKlickListener implements Listener {
 
                         player.closeInventory();
                         player.sendMessage(net.md_5.bungee.api.ChatColor.GREEN + "Your language is now english");
-
-
-                        SCHEDU = Bukkit.getScheduler().scheduleSyncRepeatingTask(Lobby.main, new Runnable() {
-                            @Override
-                            public void run() {
-                                times ++;
-                                if (times>1){
-                                    player.getInventory().setItem(2, ItemGetter.Compass(player));
-                                    Bukkit.getScheduler().cancelTask(SCHEDU);
-                                }
-                            }
-                        }, 0, 10);
-
-                        for (ItemStack itemStack : player.getInventory()) {
-                            if (itemStack.getItemMeta().getDisplayName().equals(ChatColor.GOLD + "Serverselector")){
-                                int first = player.getInventory().first(itemStack);
-                                player.getInventory().setItem(first, ItemGetter.Compass(player));
-                            }
-                        }
 
 
 

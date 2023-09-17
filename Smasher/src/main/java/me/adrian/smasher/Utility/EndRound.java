@@ -16,15 +16,16 @@ import java.io.OutputStream;
 
 public class EndRound {
 
+    public static void SayLobbyEndRound(){
+        System.out.println("test 1 SayEndRound Zeile 20");
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF("resume");
+        Smasher.main.getServer().sendPluginMessage(Smasher.main, "between:smasherlobby", out.toByteArray());
+    }
+
     public static void endRound(Player player){
 
         for (Player p: Bukkit.getOnlinePlayers()){
-
-
-
-
-
-
 
             Smasher.sendServer(p, "lobby");
 

@@ -1,6 +1,7 @@
 package me.adrian.craftadventurelobby;
 
 import me.adrian.craftadventurelobby.Utility.Importer;
+import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -25,6 +26,8 @@ public final class Lobby extends JavaPlugin {
 
 
     public static void sendServer(Player player, String server) {
+        if (player == null)
+            return;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
         try {
@@ -49,6 +52,8 @@ public final class Lobby extends JavaPlugin {
         Importer.ImportListeners(this, Bukkit.getPluginManager());
         Importer.ImportCommands(this);
         Importer.ImportPluginChannels(this);
+
+        StattMatchmaking.StartMatchmaking();
 
 
 

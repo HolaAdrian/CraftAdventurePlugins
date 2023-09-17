@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -24,6 +25,29 @@ public class ConnectionListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+
+        Player playerkitter = event.getPlayer();
+
+        playerkitter.getInventory().setItem(1, ItemGetter.KnockbackStick());
+        ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta itemMeta = boot.getItemMeta();
+        itemMeta.setUnbreakable(true);
+        boot.setItemMeta(itemMeta);
+        playerkitter.getInventory().setBoots(boot);
+
+
+        ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
+        ItemMeta itemMeta1 = chestplate.getItemMeta();
+        itemMeta1.setUnbreakable(true);
+        chestplate.setItemMeta(itemMeta1);
+        playerkitter.getInventory().setChestplate(chestplate);
+
+
+        ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
+        ItemMeta itemMeta2 = helm.getItemMeta();
+        itemMeta2.setUnbreakable(true);
+        helm.setItemMeta(itemMeta2);
+        playerkitter.getInventory().setHelmet(helm);
 
 
 
@@ -94,6 +118,7 @@ public class ConnectionListener implements Listener {
         }
 
         if (Smasher.playersalive < 2){
+            EndRound.SayLobbyEndRound();
 
             for (UUID playingPlayer : Smasher.playingPlayers) {
                 Player player1 = Bukkit.getPlayer(playingPlayer);

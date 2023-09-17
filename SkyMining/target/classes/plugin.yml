@@ -12,4 +12,5 @@ commands:
     aliases:
       - l
       - hub
-
+  trash:
+    description: Open the trash

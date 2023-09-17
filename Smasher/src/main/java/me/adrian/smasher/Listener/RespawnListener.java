@@ -51,7 +51,7 @@ public class RespawnListener implements Listener {
         event.getPlayer().teleport(location);
 
 
-        int newInvulnerabilityDuration = 20;
+        int newInvulnerabilityDuration = 1;
 
         event.getPlayer().setNoDamageTicks(newInvulnerabilityDuration);
 

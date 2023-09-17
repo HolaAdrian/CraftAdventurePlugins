@@ -1,9 +1,5 @@
 package me.adrian.craftadventurelobby.Utility;
-
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import me.adrian.craftadventurelobby.Lobby;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
@@ -21,14 +17,20 @@ import java.util.ArrayList;
 public class ItemGetter {
 
 
-    public static Integer SkyMinePlayer;
-
-    private static Integer SCHEDU;
-    private static Integer times = 0;
 
 
+    public static ItemStack stopque(){
+
+        ItemStack que = new ItemStack(Material.BARRIER);
+        ItemMeta quem = que.getItemMeta();
+        quem.setDisplayName(ChatColor.RED + "Leave Que");
+        que.setItemMeta(quem);
 
 
+        return que;
+
+
+    }
     public static ItemStack ENGLAND(){
 
         ItemStack b = new ItemStack(Material.WHITE_BANNER);
@@ -83,177 +85,9 @@ public class ItemGetter {
 
     }
 
-    public static ItemStack Smasher(Player player){
 
 
 
-        ItemStack compass = new ItemStack(Material.BLAZE_ROD);
-        ItemMeta compassmeta = compass.getItemMeta();
-
-        compassmeta.setDisplayName(ChatColor.GOLD + "Smasher");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("");
-        if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
-            if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
-                lore.add("Smasher ist ein Modus in dem du andere Spieler von der Insel hauen musst!");
-                lore.add("Du kannst dein Kit mit /changekit auswählen.");
-            }
-            else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
-                lore.add("Smasher is a mode in which you have to knock other players off your island!");
-                lore.add("You can use /changekit to change your kit");
-            }
-        }
-        else{
-            lore.add("Smasher ist ein Modus in dem du andere Spieler von der Insel hauen musst!");
-            lore.add("Du kannst dein Kit mit /changekit auswählen.");
-        }
-
-
-
-
-
-
-
-
-
-
-
-        if (Lobby.serverplayers.containsKey("event")){
-            lore.add(Lobby.serverplayers.get("event").toString());
-        }
-        lore.add("");
-
-        compassmeta.setLore(lore);
-
-        compass.setItemMeta(compassmeta);
-
-
-
-        return compass;
-
-    }
-
-
-    public static ItemStack SkyMiner(Player player){
-
-
-
-        ItemStack compass = new ItemStack(Material.NETHERITE_PICKAXE);
-        ItemMeta compassmeta = compass.getItemMeta();
-
-        compassmeta.setDisplayName(ChatColor.GOLD + "Sky Mining");
-
-                ArrayList<String> lore = new ArrayList<>();
-                lore.add("");
-                if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
-                    if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
-                        lore.add("Sky Miner ist ein Modus in dem du dich von unten nach oben arbeiten musst.");
-                        lore.add("Du startest bei Holz und gräbst dich durch die verschiedenen Dimensionen.");
-                    }
-                    else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
-                        lore.add("Sky Miner is a mode in which you have to work your way from bottom to top.");
-                        lore.add("You start with wood and dig through the various dimensions.");
-                    }
-                }
-                else{
-                    lore.add("Sky Miner ist ein Modus in dem du dich von unten nach oben arbeiten musst.");
-                    lore.add("Du startest bei Holz und gräbst dich durch die verschiedenen Dimensionen.");
-                }
-
-
-
-
-
-
-
-
-
-
-
-                if (Lobby.serverplayers.containsKey("event")){
-                    lore.add(Lobby.serverplayers.get("event").toString());
-                }
-                lore.add("");
-
-                compassmeta.setLore(lore);
-
-        compass.setItemMeta(compassmeta);
-
-
-
-        return compass;
-
-    }
-
-
-    public static ItemStack ComingSoon(Player player){
-
-        ItemStack compass = new ItemStack(Material.BARRIER);
-        ItemMeta compassmeta = compass.getItemMeta();
-
-        compassmeta.setDisplayName(ChatColor.RED + "Coming Soon...");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("");
-        if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
-            if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
-                lore.add("Mehr Server kommen bald...");
-            }
-            else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
-                lore.add("More server will come soon...");
-            }
-        }
-        else{
-            lore.add("Mehr Server kommen bald...");
-        }
-
-        lore.add("");
-        lore.add("");
-
-        compassmeta.setLore(lore);
-
-        compass.setItemMeta(compassmeta);
-
-
-
-        return compass;
-
-    }
-
-    public static ItemStack Compass(Player player){
-
-        ItemStack compass = new ItemStack(Material.COMPASS);
-        ItemMeta compassmeta = compass.getItemMeta();
-
-        compassmeta.setDisplayName(ChatColor.GOLD + "Serverselector");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("");
-        if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
-            if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
-                lore.add("Wähle deine Server aus (Rechtsklick)");
-            }
-            else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
-                lore.add("Choose your server (Right-click)");
-            }
-        }
-        else{
-            lore.add("Wähle deine Server aus (Rechtsklick)");
-        }
-
-        lore.add("");
-        lore.add("");
-
-        compassmeta.setLore(lore);
-
-        compass.setItemMeta(compassmeta);
-
-
-
-        return compass;
-
-    }
 
     public static ItemStack German(){
 

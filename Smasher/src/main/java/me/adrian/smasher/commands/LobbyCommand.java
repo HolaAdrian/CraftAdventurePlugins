@@ -1,5 +1,7 @@
 package me.adrian.smasher.commands;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import me.adrian.smasher.Smasher;
 import me.adrian.smasher.Utility.EndRound;
 import org.bukkit.Bukkit;
@@ -27,16 +29,12 @@ public class LobbyCommand implements CommandExecutor {
 
             Player player = ((Player) commandSender).getPlayer();
 
-
-            System.out.println(Smasher.playersalive + " s");
-
             if (Smasher.playingPlayers.contains(player.getUniqueId()))
                 Smasher.playingPlayers.remove(player.getUniqueId());
 
             if (player.getGameMode().equals(GameMode.SURVIVAL)){
                 Smasher.playersalive = Bukkit.getOnlinePlayers().size() -1;
             }
-            System.out.println(Smasher.playersalive);
 
 
 
@@ -51,6 +49,8 @@ public class LobbyCommand implements CommandExecutor {
              player.sendPluginMessage(Smasher.main, "BungeeCord", byteArrayOutputStream.toByteArray());
 
             if (Smasher.playersalive < 2){
+
+                EndRound.SayLobbyEndRound();
 
                 for (UUID playingPlayer : Smasher.playingPlayers) {
                     Player player1 = Bukkit.getPlayer(playingPlayer);

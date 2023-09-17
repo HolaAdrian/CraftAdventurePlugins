@@ -2,6 +2,7 @@ package me.adrian.craftadventurelobby.Utility;
 
 import me.adrian.craftadventurelobby.Commands.SetspawnCommand;
 import me.adrian.craftadventurelobby.Commands.SpawnCommand;
+import me.adrian.craftadventurelobby.Commands.smasherresumeCommand;
 import me.adrian.craftadventurelobby.Listener.*;
 import me.adrian.craftadventurelobby.Lobby;
 
@@ -15,6 +16,7 @@ public class Importer {
         main.getServer().getMessenger().registerIncomingPluginChannel(main, "bungeecord:language",new PluginMessagelistener());
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "BungeeCord");
+        main.getServer().getMessenger().registerIncomingPluginChannel(main, "between:smasherlobby", new BetweenListener());
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:kit");
         main.getServer().getMessenger().registerIncomingPluginChannel(main, "bungeecord:kit",new PluginMessagelistener());
@@ -24,15 +26,16 @@ public class Importer {
         pluginManager.registerEvents(new BreakPlaceListener(), plugin);
         pluginManager.registerEvents(new NoShitListener(), plugin);
         pluginManager.registerEvents(new LanguageKlickListener(), plugin);
-        pluginManager.registerEvents(new CompassClickListener(), plugin);
         pluginManager.registerEvents(new ConnectionListener(), plugin);
         pluginManager.registerEvents(new VillagerLobbyClickListener(), plugin);
         pluginManager.registerEvents(new KitCLickListener(), plugin);
+        pluginManager.registerEvents(new StopQueListener(), plugin);
     }
 
     public static void ImportCommands(Lobby main){
         main.getCommand("spawn").setExecutor(new SpawnCommand());
         main.getCommand("setspawn").setExecutor(new SetspawnCommand());
+        main.getCommand("smasherresume").setExecutor(new smasherresumeCommand());
     }
 
 

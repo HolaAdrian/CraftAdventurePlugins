@@ -16,6 +16,7 @@ public class ItemGetter {
         bwm.setDisplayName(ChatColor.GOLD + "Spammer-Bow");
         bwm.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
         bwm.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
+        bwm.setUnbreakable(true);
 
 
         bw.setItemMeta(bwm);
@@ -28,6 +29,7 @@ public class ItemGetter {
 
         ItemStack ks = new ItemStack(Material.STICK);
         ItemMeta ksm = ks.getItemMeta();
+        ksm.setUnbreakable(true);
 
 
         ksm.setDisplayName(ChatColor.DARK_PURPLE + "Knockback Stick");

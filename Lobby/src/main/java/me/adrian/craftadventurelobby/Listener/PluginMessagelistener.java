@@ -62,8 +62,6 @@ public class PluginMessagelistener implements PluginMessageListener {
                     inventory.setItem(1, ItemGetter.Bow());
 
                     player1.openInventory(inventory);
-                    System.out.println(4);
-
 
                 }
             }

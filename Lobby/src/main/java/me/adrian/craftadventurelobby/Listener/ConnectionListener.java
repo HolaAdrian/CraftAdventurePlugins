@@ -1,13 +1,12 @@
 package me.adrian.craftadventurelobby.Listener;
 
-import me.adrian.craftadventurelobby.Lobby;
-import me.adrian.craftadventurelobby.Utility.ItemGetter;
-import me.adrian.craftadventurelobby.Utility.Sayer;
+import me.adrian.craftadventurelobby.Utility.Creator;
+import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Salmon;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -23,20 +22,10 @@ public class ConnectionListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event){
 
 
-        if (!Lobby.playersinsmasher.isEmpty()){
-            if (Lobby.playersinsmasher.contains(event.getPlayer().getUniqueId())){
-                Lobby.playersinsmasher.remove(event.getPlayer().getUniqueId());
-                if (Lobby.playersinsmasher.isEmpty()){
-                    Lobby.smasherrunning = false;
-                }
-            }
-        }
-
-
         String name = event.getPlayer().getName();
 
         Player player = event.getPlayer();
-        player.getInventory().setHeldItemSlot(2);
+        player.getInventory().setHeldItemSlot(1);
         player.getInventory().clear();
 
         Location location = new Location(Bukkit.getWorld("world"), 735, 23, -1012, -90, 0);
@@ -55,21 +44,6 @@ public class ConnectionListener implements Listener {
 
 
 
-        SCHEDU = Bukkit.getScheduler().scheduleSyncRepeatingTask(Lobby.main, new Runnable() {
-            @Override
-            public void run() {
-                times ++;
-                if (times>1){
-                    Sayer.sayHello(player);
-                    player.getInventory().setItem(2, ItemGetter.Compass(player));
-                    Bukkit.getScheduler().cancelTask(SCHEDU);
-                }
-            }
-        }, 0, 10);
-
-
-
-
 
 
 
@@ -81,6 +55,9 @@ public class ConnectionListener implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
+        if (StattMatchmaking.mp.contains(event.getPlayer().getUniqueId())){
+            StattMatchmaking.mp.remove(event.getPlayer().getUniqueId());
+        }
 
 
         String name = event.getPlayer().getName();

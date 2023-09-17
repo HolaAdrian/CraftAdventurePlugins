@@ -3,6 +3,7 @@ package me.adrian.skymining;
 import me.adrian.skymining.Utility.SafeManager;
 import me.adrian.skymining.commands.lobbyCommand;
 import me.adrian.skymining.commands.restore;
+import me.adrian.skymining.commands.trashCommand;
 import me.adrian.skymining.commands.villagerrestore;
 import me.adrian.skymining.listeners.*;
 import org.bukkit.Bukkit;
@@ -60,6 +61,7 @@ public final class SkyMining extends JavaPlugin{
         pluginManager.registerEvents(new NoFoodListener(), plugin);
         pluginManager.registerEvents(new NoSuffocation(), plugin);
         pluginManager.registerEvents(new DeathDropListener(), plugin);
+        pluginManager.registerEvents(new GoodVillagerTradeListener(), plugin);
     }
 
 
@@ -114,6 +116,7 @@ public final class SkyMining extends JavaPlugin{
         getCommand("restoregamerules").setExecutor(new restore());
         getCommand("restorevillager").setExecutor(new villagerrestore());
         getCommand("lobby").setExecutor(new lobbyCommand());
+        getCommand("trash").setExecutor(new trashCommand());
 
 
 

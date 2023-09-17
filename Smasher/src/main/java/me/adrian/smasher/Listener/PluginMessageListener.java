@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
@@ -28,23 +29,48 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
                     String kit = in.readUTF();
                     String lowerCase = kit.toLowerCase();
 
-
-                    if (kit.startsWith("knockering")|| kit.endsWith("knockering")){
-                        playerkitter.getInventory().setItem(1, ItemGetter.KnockbackStick());
-                        playerkitter.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
-                        playerkitter.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
-                        playerkitter.getInventory().setHelmet(new ItemStack(Material.IRON_HELMET));
-                    }
-
                     if (lowerCase.contains("spammer")){
+                        ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
+                        ItemMeta itemMeta2 = helm.getItemMeta();
+                        itemMeta2.setUnbreakable(true);
+                        helm.setItemMeta(itemMeta2);
+                        ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
+                        ItemMeta itemMeta = boot.getItemMeta();
+                        itemMeta.setUnbreakable(true);
+                        boot.setItemMeta(itemMeta);
+                        playerkitter.getInventory().setBoots(boot);
+
+                        ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
+                        ItemMeta itemMeta1 = chestplate.getItemMeta();
+                        itemMeta1.setUnbreakable(true);
+                        chestplate.setItemMeta(itemMeta1);
+                        playerkitter.getInventory().setChestplate(chestplate);
+
+                        playerkitter.getInventory().setHelmet(helm);
                         playerkitter.getInventory().setItem(1, ItemGetter.Bow());
                         playerkitter.getInventory().setItem(9, new ItemStack(Material.ARROW));
                     }
                     else {
                         playerkitter.getInventory().setItem(1, ItemGetter.KnockbackStick());
-                        playerkitter.getInventory().setBoots(new ItemStack(Material.LEATHER_BOOTS));
-                        playerkitter.getInventory().setChestplate(new ItemStack(Material.LEATHER_CHESTPLATE));
-                        playerkitter.getInventory().setHelmet(new ItemStack(Material.IRON_HELMET));
+                        ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
+                        ItemMeta itemMeta = boot.getItemMeta();
+                        itemMeta.setUnbreakable(true);
+                        boot.setItemMeta(itemMeta);
+                        playerkitter.getInventory().setBoots(boot);
+
+
+                        ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
+                        ItemMeta itemMeta1 = chestplate.getItemMeta();
+                        itemMeta1.setUnbreakable(true);
+                        chestplate.setItemMeta(itemMeta1);
+                        playerkitter.getInventory().setChestplate(chestplate);
+
+
+                        ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
+                        ItemMeta itemMeta2 = helm.getItemMeta();
+                        itemMeta2.setUnbreakable(true);
+                        helm.setItemMeta(itemMeta2);
+                        playerkitter.getInventory().setHelmet(helm);
                     }
 
 

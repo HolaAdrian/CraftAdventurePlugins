@@ -1,3 +1,5 @@
-me\adrian\serveradrianbungee\commands\lobbycommand.class
 me\adrian\serveradrianbungee\ServerAdrianBungee.class
 me\adrian\serveradrianbungee\commands\kitcommand.class
+me\adrian\serveradrianbungee\commands\lobbycommand.class
+me\adrian\serveradrianbungee\commands\creditscommand.class
+me\adrian\serveradrianbungee\commands\versioncommand.class
