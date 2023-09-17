@@ -13,7 +13,7 @@ public class StattMatchmaking {
 
     private static Integer SCHEDU;
 
-    private static Integer countdown = 30;
+
 
     public static void StartMatchmaking(){
 
@@ -26,6 +26,8 @@ public class StattMatchmaking {
 
 
                 SCHEDU = Bukkit.getScheduler().scheduleAsyncRepeatingTask(Lobby.main, new Runnable() {
+
+                    Integer countdown = 30;
 
                     @Override
                     public void run() {
