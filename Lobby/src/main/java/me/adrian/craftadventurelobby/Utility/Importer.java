@@ -1,9 +1,6 @@
 package me.adrian.craftadventurelobby.Utility;
 
-import me.adrian.craftadventurelobby.Commands.NeunACommand;
-import me.adrian.craftadventurelobby.Commands.SetspawnCommand;
-import me.adrian.craftadventurelobby.Commands.SpawnCommand;
-import me.adrian.craftadventurelobby.Commands.smasherresumeCommand;
+import me.adrian.craftadventurelobby.Commands.*;
 import me.adrian.craftadventurelobby.Listener.*;
 import me.adrian.craftadventurelobby.Lobby;
 
@@ -38,7 +35,7 @@ public class Importer {
         main.getCommand("spawn").setExecutor(new SpawnCommand());
         main.getCommand("setspawn").setExecutor(new SetspawnCommand());
         main.getCommand("smasherresume").setExecutor(new smasherresumeCommand());
-        main.getCommand("9a").setExecutor(new NeunACommand());
+        main.getCommand("discord").setExecutor(new DiscordCommand());
     }
 
 

@@ -13,4 +13,7 @@ commands:
     aliases:
       - resumesmasher
     permission: smasher.resume
-  9a:
+  discord:
+    aliases:
+      - dc
+    description: Go to our discord

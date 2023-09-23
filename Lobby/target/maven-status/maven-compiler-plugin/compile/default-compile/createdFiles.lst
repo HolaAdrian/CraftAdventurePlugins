@@ -5,11 +5,11 @@ me\adrian\craftadventurelobby\Utility\ItemGetter.class
 me\adrian\craftadventurelobby\Listener\BetweenListener.class
 me\adrian\craftadventurelobby\Listener\LanguageKlickListener.class
 me\adrian\craftadventurelobby\Listener\StopQueListener.class
+me\adrian\craftadventurelobby\Commands\DiscordCommand.class
 me\adrian\craftadventurelobby\Listener\PluginMessagelistener.class
 me\adrian\craftadventurelobby\Listener\VillagerLobbyClickListener.class
 me\adrian\craftadventurelobby\Listener\VillagerSilentListener.class
 me\adrian\craftadventurelobby\Utility\StattMatchmaking.class
-me\adrian\craftadventurelobby\Commands\NeunACommand.class
 me\adrian\craftadventurelobby\Listener\BreakPlaceListener.class
 me\adrian\craftadventurelobby\Listener\KitCLickListener.class
 me\adrian\craftadventurelobby\Commands\SetspawnCommand.class
