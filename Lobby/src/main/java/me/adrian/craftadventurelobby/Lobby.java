@@ -21,6 +21,9 @@ public final class Lobby extends JavaPlugin {
 
     public static boolean smasherrunning = false;
 
+    public static boolean smasherwartung = false;
+    public static boolean skyminingwartung = false;
+
 
 
     public static void sendServerQuit(Player player, String server) {

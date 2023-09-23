@@ -4,10 +4,16 @@ import me.adrian.craftadventurelobby.Commands.*;
 import me.adrian.craftadventurelobby.Listener.*;
 import me.adrian.craftadventurelobby.Lobby;
 
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 public class Importer {
+
+    public static void ImportPermission(PluginManager pluginManager){
+        pluginManager.addPermission(new Permission("lobby.wartungsarbeiten"));
+
+    }
 
     public static void ImportPluginChannels(Lobby main){
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:language");
@@ -18,6 +24,8 @@ public class Importer {
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:kit");
         main.getServer().getMessenger().registerIncomingPluginChannel(main, "bungeecord:kit",new PluginMessagelistener());
+
+        main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:lobby");
     }
 
     public static void ImportListeners(Plugin plugin, PluginManager pluginManager){
@@ -36,6 +44,7 @@ public class Importer {
         main.getCommand("setspawn").setExecutor(new SetspawnCommand());
         main.getCommand("smasherresume").setExecutor(new smasherresumeCommand());
         main.getCommand("discord").setExecutor(new DiscordCommand());
+        main.getCommand("wartung").setExecutor(new WartungsarbeitenCommand());
     }
 
 

@@ -33,7 +33,7 @@ public class SpawnCommand implements CommandExecutor {
 
                     if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
                         if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
-                            player.sendMessage(ChatColor.RED + "Du wurdest zum Spawn teleportiert.");
+                            player.sendMessage(ChatColor.GREEN + "Du wurdest zum Spawn teleportiert.");
                         }
                         else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
                             player.sendMessage(ChatColor.GREEN + "You were teleportet to the spawn.");
@@ -43,19 +43,6 @@ public class SpawnCommand implements CommandExecutor {
                         player.sendMessage(ChatColor.GREEN + "Du wurdest zum Spawn teleportiert.");
                     }
 
-                }
-
-                Player player = ((Player) commandSender).getPlayer();
-                if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
-                    if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
-                        player.sendMessage(ChatColor.RED + "Die Spawnwelt wurde nicht gefunden, bitte frage ein Teammitglied nach hilfe!");
-                    }
-                    else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
-                        player.sendMessage(ChatColor.RED + "The world name changed please ask an staff for help!");
-                    }
-                }
-                else{
-                    player.sendMessage(ChatColor.RED + "Die Spawnwelt wurde nicht gefunden, bitte frage ein Teammitglied nach hilfe!");
                 }
 
 

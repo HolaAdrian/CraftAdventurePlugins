@@ -17,3 +17,7 @@ commands:
     aliases:
       - dc
     description: Go to our discord
+  wartung:
+    description: Set's the Server or an gamemode in locked mode!
+    aliases:
+      - wartungsmodus

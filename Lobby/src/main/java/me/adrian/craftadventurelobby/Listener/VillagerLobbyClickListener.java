@@ -19,11 +19,38 @@ public class VillagerLobbyClickListener implements Listener {
             Villager villager = (Villager) event.getRightClicked();
             if (villager.getCustomName().contains("Sky Mining")){
                 Player player = event.getPlayer();
+                if (Lobby.skyminingwartung == true){
+                    if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
+                        if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")) {
+                            Creator.CreateTitle(player, ChatColor.RED + "Sky Mining ist in Wartungsarbeiten!", ChatColor.RED + "Bitte warte bis die Wartungsarbeiten fertig sind!", 20, 60, 20);
+                        } else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")) {
+                            Creator.CreateTitle(player, ChatColor.RED + "We are currently working on Sky Mining", ChatColor.RED + "Because of this you can't join!", 20, 60, 20);
+                        }
+                    } else {
+                        Creator.CreateTitle(player, ChatColor.RED + "Sky Mining ist in Wartungsarbeiten!", ChatColor.RED + "Bitte warte bis die Wartungsarbeiten fertig sind!", 20, 60, 20);
+                    }
+                    return;
+                }
                 Lobby.sendServer(player, "skyminer");
             }
             if (villager.getCustomName().contains("Smasher")){
+                Player player = event.getPlayer();
+                if (Lobby.smasherwartung == true){
+                    if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
+                        if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")) {
+                            Creator.CreateTitle(player, ChatColor.RED + "Smasher ist in Wartungsarbeiten!", ChatColor.RED + "Bitte warte bis die Wartungsarbeiten fertig sind!", 20, 60, 20);
+                        } else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")) {
+                            Creator.CreateTitle(player, ChatColor.RED + "We are currently working on Smasher", ChatColor.RED + "Because of this you can't join!", 20, 60, 20);
+                        }
+                    } else {
+                        Creator.CreateTitle(player, ChatColor.RED + "Smahser ist in Wartungsarbeiten!", ChatColor.RED + "Bitte warte bis die Wartungsarbeiten fertig sind!", 20, 60, 20);
+                    }
+
+
+                    return;
+                }
+
                 if (Lobby.smasherrunning == false){
-                    Player player = event.getPlayer();
                     if (StattMatchmaking.mp.isEmpty()){
                         StattMatchmaking.mp.add(player.getUniqueId());
                     }

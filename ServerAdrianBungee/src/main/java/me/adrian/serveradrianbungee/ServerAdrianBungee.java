@@ -99,6 +99,7 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
         getProxy().registerChannel("bungeecord:language");
         getProxy().registerChannel("bungeecord:kit");
         getProxy().registerChannel("between:smasherlobby");
+        getProxy().registerChannel("bungeecord:lobby");
         getProxy().getPluginManager().registerListener(this, this);
         getProxy().getPluginManager().registerCommand(this, new lobbycommand());
         getProxy().getPluginManager().registerCommand(this, new kitcommand());
@@ -201,6 +202,29 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPluginMessageReceived(PluginMessageEvent event) {
+
+        if (event.getTag().equals("bungeecord:lobby")){
+            ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
+            String message = in.readUTF();
+            if (message.equals("la")){
+                for (ProxiedPlayer player: getProxy().getPlayers()){
+                    if (player.getUniqueId().equals("41a50589-a5a9-4337-9631-a27de886c225") || player.getUniqueId().equals("70f12a35-b895-4dc3-b847-eac2a2e64035") || player.getUniqueId().equals("70f12a35b8954dc3b847eac2a2e64035")|| player.getUniqueId().equals("41a50589a5a943379631a27de886c225")){
+                        return;
+                    }
+                    if (playerlanguage.containsKey(player.getUniqueId())) {
+                        if (playerlanguage.get(player.getUniqueId()).equals("de")) {
+                            player.disconnect("Der Server ist jetzt im Wartungsmodus");
+                        } else if (playerlanguage.get(player.getUniqueId()).equals("en")) {
+                            player.disconnect("The server is now in maintenance");
+                        }
+                    } else {
+                        player.disconnect("Der Server ist jetzt im Wartungsmodus");
+                    }
+                }
+            }
+        }
+
+
         if (event.getTag().equals("between:smasherlobby")){
             System.out.println("test 1 SayEndRound Zeile 20");
             ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
