@@ -55,6 +55,10 @@ public class LobbyCommand implements CommandExecutor {
 
             if (Smasher.playersalive < 2){
 
+                for (Player p: Bukkit.getOnlinePlayers()){
+                    p.setGameMode(GameMode.SPECTATOR);
+                }
+
                 EndRound.SayLobbyEndRound();
 
                 for (Player p: Bukkit.getOnlinePlayers()){

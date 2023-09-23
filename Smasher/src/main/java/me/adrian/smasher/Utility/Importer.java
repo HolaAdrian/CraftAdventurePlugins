@@ -2,6 +2,7 @@ package me.adrian.smasher.Utility;
 
 import me.adrian.smasher.Listener.*;
 import me.adrian.smasher.Smasher;
+import me.adrian.smasher.commands.DiscordCommand;
 import me.adrian.smasher.commands.LobbyCommand;
 import org.bukkit.plugin.PluginManager;
 
@@ -9,6 +10,7 @@ public class Importer {
 
     public static void ImportCommands(Smasher main){
         main.getCommand("lobby").setExecutor(new LobbyCommand());
+        main.getCommand("discord").setExecutor(new DiscordCommand());
     }
 
 

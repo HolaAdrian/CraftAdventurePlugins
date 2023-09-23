@@ -128,6 +128,10 @@ public class ConnectionListener implements Listener {
             EndRound.SayLobbyEndRound();
 
             for (Player p: Bukkit.getOnlinePlayers()){
+                p.setGameMode(GameMode.SPECTATOR);
+            }
+
+            for (Player p: Bukkit.getOnlinePlayers()){
                 if (!Smasher.deathPlayers.contains(p.getUniqueId())){
                     lastonestanding = p.getName();
                 }

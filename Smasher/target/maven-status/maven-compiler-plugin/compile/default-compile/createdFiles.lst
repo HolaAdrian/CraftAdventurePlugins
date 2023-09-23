@@ -18,3 +18,4 @@ me\adrian\smasher\Listener\PlayerDeathListener$1.class
 me\adrian\smasher\Listener\BreakPlaceListener.class
 me\adrian\smasher\Listener\ConnectionListener.class
 me\adrian\smasher\Utility\Importer.class
+me\adrian\smasher\commands\DiscordCommand.class

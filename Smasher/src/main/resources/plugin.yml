@@ -8,4 +8,8 @@ commands:
     aliases:
       - l
       - hub
+  discord:
+    description: Go to our discord
+    aliases:
+      - dc
 
