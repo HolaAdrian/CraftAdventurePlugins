@@ -13,3 +13,4 @@ commands:
     aliases:
       - resumesmasher
     permission: smasher.resume
+  9a:

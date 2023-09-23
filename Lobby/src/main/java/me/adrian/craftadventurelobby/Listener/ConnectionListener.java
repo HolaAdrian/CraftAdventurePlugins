@@ -31,6 +31,7 @@ public class ConnectionListener implements Listener {
         Location location = new Location(Bukkit.getWorld("world"), 735, 23, -1012, -90, 0);
 
         player.teleport(location);
+        player.setLevel(0);
 
 
         event.setJoinMessage("");

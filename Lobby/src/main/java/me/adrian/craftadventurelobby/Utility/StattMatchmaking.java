@@ -2,6 +2,7 @@ package me.adrian.craftadventurelobby.Utility;
 
 import me.adrian.craftadventurelobby.Lobby;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class StattMatchmaking {
 
                                     } else {
                                         player1.setLevel(countdown);
+                                        player1.sendActionBar(ChatColor.GREEN + "Countdown: " + countdown);
                                     }
                                 }
 
@@ -64,7 +66,7 @@ public class StattMatchmaking {
 
                                 for (UUID uuid : mp) {
                                     Player player1 = Bukkit.getPlayer(uuid);
-                                    Lobby.sendServer(player1, "smasher");
+                                    Lobby.sendServerQuit(player1, "smasher");
                                     player1.setLevel(0);
                                     mp.remove(player1);
 

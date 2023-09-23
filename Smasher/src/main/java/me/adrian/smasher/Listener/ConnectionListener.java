@@ -3,6 +3,7 @@ package me.adrian.smasher.Listener;
 import me.adrian.smasher.Smasher;
 import me.adrian.smasher.Utility.EndRound;
 import me.adrian.smasher.Utility.ItemGetter;
+import me.adrian.smasher.Utility.Sender;
 import me.adrian.smasher.commands.LobbyCommand;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,6 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
 
 public class ConnectionListener implements Listener {
@@ -86,7 +89,7 @@ public class ConnectionListener implements Listener {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999, 0));
 
-        Integer integer = Smasher.randomGenerator(1, 5);
+        Integer integer = Smasher.randomGenerator(1, 8);
 
         Double x = config.getDouble("location" + integer + ".x");
         Double y = config.getDouble("location" + integer + ".y");
@@ -109,6 +112,10 @@ public class ConnectionListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
+        if (!Smasher.deathPlayers.contains(player.getUniqueId())){
+            Smasher.deathPlayers.add(player.getUniqueId());
+        }
+
         if (Smasher.playingPlayers.contains(player.getUniqueId()))
             Smasher.playingPlayers.remove(player.getUniqueId());
 
@@ -120,14 +127,9 @@ public class ConnectionListener implements Listener {
         if (Smasher.playersalive < 2){
             EndRound.SayLobbyEndRound();
 
-            for (UUID playingPlayer : Smasher.playingPlayers) {
-                Player player1 = Bukkit.getPlayer(playingPlayer);
-                if (player1 != null){
-                    if (player != player1){
-                        lastonestanding = player1.getName();
-                    }
-
-
+            for (Player p: Bukkit.getOnlinePlayers()){
+                if (!Smasher.deathPlayers.contains(p.getUniqueId())){
+                    lastonestanding = p.getName();
                 }
             }
 
@@ -137,12 +139,15 @@ public class ConnectionListener implements Listener {
                 if (Smasher.playerlanguage.containsKey(p.getUniqueId())){
                     if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")){
                         p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");
+                        Sender.CreateTitle(p, ChatColor.GOLD +lastonestanding, ChatColor.GREEN + "hat gewonnen!", 20, 60, 20);
                     }
                     else if (Smasher.playerlanguage.get(p.getUniqueId()).equals("en")){
-                        p.sendMessage(ChatColor.GOLD + lastonestanding + " has won this round of smasher!");                                }
+                        p.sendMessage(ChatColor.GOLD + lastonestanding + " has won this round of smasher!");
+                        Sender.CreateTitle(p, ChatColor.GOLD + lastonestanding, ChatColor.GREEN + "has won!", 20, 60, 20);}
                 }
                 else{
                     p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");
+                    Sender.CreateTitle(p, ChatColor.GOLD + lastonestanding, ChatColor.GREEN + "hat gewonnen!", 20, 60, 20);
                 }
             }
 

@@ -61,7 +61,6 @@ public final class SkyMining extends JavaPlugin{
         pluginManager.registerEvents(new NoFoodListener(), plugin);
         pluginManager.registerEvents(new NoSuffocation(), plugin);
         pluginManager.registerEvents(new DeathDropListener(), plugin);
-        pluginManager.registerEvents(new GoodVillagerTradeListener(), plugin);
     }
 
 

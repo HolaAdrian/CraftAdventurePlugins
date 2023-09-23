@@ -17,7 +17,6 @@ import java.io.OutputStream;
 public class EndRound {
 
     public static void SayLobbyEndRound(){
-        System.out.println("test 1 SayEndRound Zeile 20");
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("resume");
         Smasher.main.getServer().sendPluginMessage(Smasher.main, "between:smasherlobby", out.toByteArray());
@@ -26,7 +25,6 @@ public class EndRound {
     public static void endRound(Player player){
 
         for (Player p: Bukkit.getOnlinePlayers()){
-
             Smasher.sendServer(p, "lobby");
 
             p.setGameMode(GameMode.SURVIVAL);
@@ -38,6 +36,7 @@ public class EndRound {
         LobbyCommand.lastonestanding = "Niemand";
         ConnectionListener.lastonestanding = "Niemand";
         Smasher.playersalive = 0;
+        Smasher.deathPlayers.clear();
 
 
         return;

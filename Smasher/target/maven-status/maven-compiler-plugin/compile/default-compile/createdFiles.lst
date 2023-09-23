@@ -13,6 +13,7 @@ me\adrian\smasher\Smasher.class
 me\adrian\smasher\Listener\PlayerInteractListener.class
 me\adrian\smasher\Listener\PlayerMoveListener.class
 me\adrian\smasher\Listener\ArrowOnGroundListener.class
+me\adrian\smasher\Utility\Sender.class
 me\adrian\smasher\Listener\PlayerDeathListener$1.class
 me\adrian\smasher\Listener\BreakPlaceListener.class
 me\adrian\smasher\Listener\ConnectionListener.class

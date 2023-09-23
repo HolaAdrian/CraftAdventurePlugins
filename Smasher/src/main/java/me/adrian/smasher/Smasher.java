@@ -40,6 +40,9 @@ public final class Smasher extends JavaPlugin {
 
 
     public static Integer playersalive = 0;
+
+    public static ArrayList<UUID> deathPlayers = new ArrayList<>();
+
     public static ArrayList<UUID> playingPlayers = new ArrayList<>();
 
 

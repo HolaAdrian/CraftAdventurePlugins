@@ -21,7 +21,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class NoShitListener implements Listener {
 
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         event.setCancelled(true);
@@ -36,9 +35,9 @@ public class NoShitListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (event.getItem() == null){
+        if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE))
             event.setCancelled(true);
-        }
+
     }
 
     @EventHandler

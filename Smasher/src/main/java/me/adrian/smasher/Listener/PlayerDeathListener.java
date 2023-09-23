@@ -2,6 +2,7 @@ package me.adrian.smasher.Listener;
 
 import me.adrian.smasher.Smasher;
 import me.adrian.smasher.Utility.EndRound;
+import me.adrian.smasher.Utility.Sender;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -28,6 +29,9 @@ public class PlayerDeathListener implements Listener {
                     Smasher.lives.put(player.getUniqueId(), livesafter);
 
                     if (livesafter.equals(0)){
+                        if (!Smasher.deathPlayers.contains(player.getUniqueId())){
+                            Smasher.deathPlayers.add(player.getUniqueId());
+                        }
                         player.setGameMode(GameMode.SPECTATOR);
                         Smasher.playersalive --;
                     }
@@ -38,28 +42,28 @@ public class PlayerDeathListener implements Listener {
                     if (Smasher.playersalive < 2){
                         EndRound.SayLobbyEndRound();
 
-                        for (UUID playingPlayer : Smasher.playingPlayers) {
-                            Player player1 = Bukkit.getPlayer(playingPlayer);
-                            if (player1 != null){
-                                if (player != player1){
-                                    lastonestanding = player1.getName();
-                                }
+                        for (Player p: Bukkit.getOnlinePlayers()){
+                            if (!Smasher.deathPlayers.contains(p.getUniqueId())){
+                                lastonestanding = p.getName();
                             }
                         }
 
 
 
                         for (Player p: Bukkit.getOnlinePlayers()){
-                            p.setGameMode(GameMode.SPECTATOR);
                             if (Smasher.playerlanguage.containsKey(p.getUniqueId())){
                                 if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")){
                                     p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");
+                                    Sender.CreateTitle(p, ChatColor.GOLD+lastonestanding,ChatColor.GREEN +  "hat gewonnen!", 20, 60, 20);
                                 }
                                 else if (Smasher.playerlanguage.get(p.getUniqueId()).equals("en")){
-                                    p.sendMessage(ChatColor.GOLD + lastonestanding + " has won this round of smasher!");                                }
+                                    p.sendMessage(ChatColor.GOLD + lastonestanding + " has won this round of smasher!");
+                                    Sender.CreateTitle(p, ChatColor.GOLD+lastonestanding, ChatColor.GREEN + "has won!", 20, 60, 20);}
                             }
                             else{
-                                p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");                            }
+                                p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");
+                                Sender.CreateTitle(p, ChatColor.GOLD+lastonestanding, ChatColor.GREEN + "hat gewonnen!", 20, 60, 20);
+                            }
                         }
 
 

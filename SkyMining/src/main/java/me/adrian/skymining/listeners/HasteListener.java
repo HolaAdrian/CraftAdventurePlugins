@@ -68,15 +68,15 @@ public class HasteListener implements Listener {
 
                             if (SkyMining.playerlanguage.containsKey(event.getPlayer().getUniqueId())){
                                 if (SkyMining.playerlanguage.get(event.getPlayer().getUniqueId()).equals("de")){
-                                    event.getPlayer().sendMessage(ChatColor.GREEN + "Du hast jetzt für 60 Sekunden Haste 2");
+                                    event.getPlayer().sendMessage(ChatColor.GREEN + "Du hast jetzt für 2 Minuten Haste 3");
                                 }
                                 else if (SkyMining.playerlanguage.get(event.getPlayer().getUniqueId()).equals("en")){
-                                    event.getPlayer().sendMessage(ChatColor.GREEN + "You now have haste 2 for 60 seconds");
+                                    event.getPlayer().sendMessage(ChatColor.GREEN + "You now have haste 3 for 2 minutes");
                                 }
 
                             }
                             else {
-                                event.getPlayer().sendMessage(ChatColor.GREEN + "Du hast jetzt für 60 Sekunden Haste 2");
+                                event.getPlayer().sendMessage(ChatColor.GREEN + "Du hast jetzt für 2 Minuten Haste 3");
                             }
 
 
@@ -85,7 +85,7 @@ public class HasteListener implements Listener {
 
 
 
-                            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 1200 , 1));
+                            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 2400 , 2));
 
 
 
