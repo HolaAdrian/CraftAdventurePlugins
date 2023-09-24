@@ -3,7 +3,9 @@ package me.adrian.craftadventurelobby.Utility;
 import me.adrian.craftadventurelobby.Lobby;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -33,13 +35,19 @@ public class StattMatchmaking {
                     @Override
                     public void run() {
 
+
                         Integer players = mp.size();
                         if (players < 2) {
                             for (UUID uuid : mp) {
                                 if (Bukkit.getPlayer(uuid) != null) {
                                     Player player1 = Bukkit.getPlayer(uuid);
-                                    player1.getInventory().setItem(8, ItemGetter.stopque());
+                                    if (player1.getInventory().getItem(8) == null || player1.getInventory().getItem(8).equals(Material.BARRIER)){
+                                        player1.getInventory().clear();
+                                        player1.getInventory().setItem(8, ItemGetter.stopque());
+
+                                    }
                                     player1.setLevel(60);
+                                    player1.sendActionBar(ChatColor.RED + "Countdown: 60");
                                     countdown = 30;
                                 }
                             }
@@ -49,14 +57,18 @@ public class StattMatchmaking {
                             for (UUID uuid : mp) {
                                 if (Bukkit.getPlayer(uuid) != null) {
                                     Player player1 = Bukkit.getPlayer(uuid);
-                                    player1.getInventory().setItem(8, ItemGetter.stopque());
                                     if (countdown < 1) {
                                         Lobby.smasherrunning = true;
 
 
                                     } else {
+                                        if (player1.getInventory().getItem(8) == null || player1.getInventory().getItem(8).equals(Material.BARRIER)){
+                                                player1.getInventory().clear();
+                                                player1.getInventory().setItem(8, ItemGetter.stopque());
+
+                                        }
                                         player1.setLevel(countdown);
-                                        player1.sendActionBar(ChatColor.GREEN + "Countdown: " + countdown);
+                                        player1.sendActionBar(ChatColor.GREEN + "Players: " + mp.size() +  " " + " " + " Countdown: " + countdown);
                                     }
                                 }
 

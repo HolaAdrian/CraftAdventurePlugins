@@ -1,6 +1,7 @@
 package me.adrian.craftadventurelobby.Listener;
 
 import me.adrian.craftadventurelobby.Utility.Creator;
+import me.adrian.craftadventurelobby.Utility.ItemGetter;
 import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.net.MalformedURLException;
 
 public class ConnectionListener implements Listener {
 
@@ -32,6 +35,7 @@ public class ConnectionListener implements Listener {
 
         player.teleport(location);
         player.setLevel(0);
+        Creator.SetLobbyItems(player);
 
 
         event.setJoinMessage("");

@@ -3,6 +3,8 @@ package me.adrian.craftadventurelobby.Commands;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.adrian.craftadventurelobby.Lobby;
+import me.adrian.craftadventurelobby.Utility.Creator;
+import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -18,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class WartungsarbeitenCommand implements CommandExecutor, TabCompleter {
     @Override
@@ -126,6 +129,16 @@ public class WartungsarbeitenCommand implements CommandExecutor, TabCompleter {
                 }
                 else {
                     Lobby.smasherwartung = true;
+                    for (UUID uuid: StattMatchmaking.mp){
+                        if (Bukkit.getPlayer(uuid) != null){
+                            Player player1 = Bukkit.getPlayer(uuid);
+                            player1.getInventory().clear();
+                            player1.getInventory().setHeldItemSlot(0);
+                            Creator.SetLobbyItems(player1);
+                            player1.setLevel(0);
+                        }
+                    }
+                    StattMatchmaking.mp.clear();
                     if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
                         if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")) {
                             player.sendMessage(ChatColor.GREEN + "Smasher ist nun im Wartungsmodus!");

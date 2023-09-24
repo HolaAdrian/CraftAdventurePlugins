@@ -37,6 +37,10 @@ public class Importer {
         pluginManager.registerEvents(new KitCLickListener(), plugin);
         pluginManager.registerEvents(new StopQueListener(), plugin);
         pluginManager.registerEvents(new VillagerSilentListener(), plugin);
+        pluginManager.registerEvents(new LanguageClickListener(), plugin);
+        pluginManager.registerEvents(new KitKlickListener(), plugin);
+        pluginManager.registerEvents(new KompassClickListener(), plugin);
+        pluginManager.registerEvents(new KompassKlickListener(), plugin);
     }
 
     public static void ImportCommands(Lobby main){

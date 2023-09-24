@@ -4,12 +4,16 @@ import me.adrian.craftadventurelobby.Utility.Importer;
 import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -35,7 +39,6 @@ public final class Lobby extends JavaPlugin {
             dataOutputStream.writeUTF("Connect");
             dataOutputStream.writeUTF(server);
         } catch (IOException ignored) {
-
         }
         player.sendPluginMessage(main, "BungeeCord", byteArrayOutputStream.toByteArray());
         player.sendMessage(ChatColor.GREEN + "Connecting to server...");
@@ -60,13 +63,18 @@ public final class Lobby extends JavaPlugin {
 
     public static HashMap<UUID, String> playerlanguage = new HashMap<>();
 
-    public static HashMap<String, Integer> serverplayers = new HashMap<>();
-
     public static Lobby main;
+
+
 
     @Override
     public void onEnable() {
+
+
+
         main = this;
+
+
         Importer.ImportListeners(this, Bukkit.getPluginManager());
         Importer.ImportCommands(this);
         Importer.ImportPluginChannels(this);
@@ -81,4 +89,8 @@ public final class Lobby extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
+
+
+
 }

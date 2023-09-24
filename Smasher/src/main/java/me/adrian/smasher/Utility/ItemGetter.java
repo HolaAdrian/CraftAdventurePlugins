@@ -33,7 +33,7 @@ public class ItemGetter {
 
 
         ksm.setDisplayName(ChatColor.DARK_PURPLE + "Knockback Stick");
-        ksm.addEnchant(Enchantment.KNOCKBACK, 1, true);
+        ksm.addEnchant(Enchantment.KNOCKBACK, 3, true);
 
         ks.setItemMeta(ksm);
 

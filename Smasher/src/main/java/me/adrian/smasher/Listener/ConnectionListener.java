@@ -99,6 +99,7 @@ public class ConnectionListener implements Listener {
 
         Location location = new Location(Bukkit.getWorld("world"), x, y, z ,yaw, pitch);
         player.teleport(location);
+        player.setGameMode(GameMode.SURVIVAL);
 
         Smasher.playersalive = Smasher.playersalive +1;
 
