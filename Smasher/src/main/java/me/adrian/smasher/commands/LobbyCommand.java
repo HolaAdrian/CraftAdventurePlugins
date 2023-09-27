@@ -7,6 +7,9 @@ import me.adrian.smasher.Smasher;
 import me.adrian.smasher.Utility.EndRound;
 import me.adrian.smasher.Utility.Respawner;
 import me.adrian.smasher.Utility.Sender;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -32,6 +35,9 @@ public class LobbyCommand implements CommandExecutor {
 
             Player player = ((Player) commandSender).getPlayer();
             Smasher.lives.put(player.getUniqueId(), 0);
+
+            player.setMaxHealth(20);
+            player.setHealth(10);
 
             if (Smasher.lives.containsKey(player.getUniqueId())){
 
@@ -118,9 +124,23 @@ public class LobbyCommand implements CommandExecutor {
         }
 
 
-        if (commandSender instanceof Player){
+        if (commandSender instanceof Player) {
             Player player = ((Player) commandSender).getPlayer();
             Smasher.sendServer(player, "lobby");
+            Bukkit.getScheduler().scheduleAsyncDelayedTask(Smasher.main, new Runnable() {
+                @Override
+                public void run() {
+                    if (Smasher.playerlanguage.containsKey(player.getUniqueId())) {
+                        if (Smasher.playerlanguage.get(player.getUniqueId()).equals("de")) {
+                            player.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline!");
+                        } else if (Smasher.playerlanguage.get(player.getUniqueId()).equals("en")) {
+                            player.kickPlayer("The Lobby couldn't be reached! It most likely is offline!");
+                        }
+                    } else {
+                        player.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline!");
+                    }
+                }
+            }, 20);
         }
 
 

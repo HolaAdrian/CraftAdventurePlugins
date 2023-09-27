@@ -30,6 +30,9 @@ public class ConnectionListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
+
+        event.getPlayer().setHealth(20);
+
         Respawner.SetPlayerKits();
 
 
@@ -70,7 +73,10 @@ public class ConnectionListener implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
+
         Player player = event.getPlayer();
+        player.setMaxHealth(20);
+        player.setHealth(10);
 
         if (!Smasher.deathPlayers.contains(player.getUniqueId())){
             Smasher.deathPlayers.add(player.getUniqueId());

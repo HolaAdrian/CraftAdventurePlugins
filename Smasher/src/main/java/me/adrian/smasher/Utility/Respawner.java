@@ -75,7 +75,12 @@ public class Respawner {
                     playerkitter.getInventory().setHelmet(helm);
                     playerkitter.getInventory().setItem(0, ItemGetter.Assasine());
                 }
+                if (s.contains("axe")){
+                    playerkitter.getInventory().clear();
+                    playerkitter.getInventory().setItem(0, ItemGetter.axeKit());
+                }
                 if (s.contains("knockering")){
+                    playerkitter.getInventory().clear();
                     playerkitter.getInventory().setItem(0, ItemGetter.KnockbackStick());
                     ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
                     ItemMeta itemMeta = boot.getItemMeta();
@@ -96,6 +101,36 @@ public class Respawner {
                     itemMeta2.setUnbreakable(true);
                     helm.setItemMeta(itemMeta2);
                     playerkitter.getInventory().setHelmet(helm);
+                }
+                if (s.contains("tank")){
+                    playerkitter.setMaxHealth(10);
+                    playerkitter.setHealth(10);
+                    playerkitter.getInventory().setItem(0, ItemGetter.TankStick());
+                    ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
+                    ItemMeta itemMeta = boot.getItemMeta();
+                    itemMeta.setUnbreakable(true);
+                    boot.setItemMeta(itemMeta);
+                    playerkitter.getInventory().setBoots(boot);
+
+
+                    ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
+                    ItemMeta itemMeta1 = chestplate.getItemMeta();
+                    itemMeta1.setUnbreakable(true);
+                    chestplate.setItemMeta(itemMeta1);
+                    playerkitter.getInventory().setChestplate(chestplate);
+
+
+                    ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
+                    ItemMeta itemMeta2 = helm.getItemMeta();
+                    itemMeta2.setUnbreakable(true);
+                    helm.setItemMeta(itemMeta2);
+                    playerkitter.getInventory().setHelmet(helm);
+
+                    ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
+                    ItemMeta itemMeta3 = leggings.getItemMeta();
+                    itemMeta3.setUnbreakable(true);
+                    leggings.setItemMeta(itemMeta3);
+                    playerkitter.getInventory().setLeggings(leggings);
                 }
             }
         }
