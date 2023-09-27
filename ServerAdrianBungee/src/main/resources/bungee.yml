@@ -1,3 +1,0 @@
-name: ServerAdrianBungee
-version: '${project.version}'
-main: me.adrian.serveradrianbungee.ServerAdrianBungee
