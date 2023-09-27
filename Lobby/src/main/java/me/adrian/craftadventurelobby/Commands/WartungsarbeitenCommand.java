@@ -104,7 +104,7 @@ public class WartungsarbeitenCommand implements CommandExecutor, TabCompleter {
                     Lobby.main.getServer().setWhitelist(false);
                     if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
                         if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")) {
-                            player.sendMessage(ChatColor.GREEN + "Der Server ist nun ncihtmehr im Wartungsmodus");
+                            player.sendMessage(ChatColor.GREEN + "Der Server ist nun nichtmehr im Wartungsmodus");
                         } else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")) {
                             player.sendMessage(ChatColor.GREEN + "The server is now no longer in locked mode!");
                         }

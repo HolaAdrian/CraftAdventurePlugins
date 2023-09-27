@@ -1,10 +1,7 @@
 package me.adrian.skymining;
 
 import me.adrian.skymining.Utility.SafeManager;
-import me.adrian.skymining.commands.lobbyCommand;
-import me.adrian.skymining.commands.restore;
-import me.adrian.skymining.commands.trashCommand;
-import me.adrian.skymining.commands.villagerrestore;
+import me.adrian.skymining.commands.*;
 import me.adrian.skymining.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -116,6 +113,7 @@ public final class SkyMining extends JavaPlugin{
         getCommand("restorevillager").setExecutor(new villagerrestore());
         getCommand("lobby").setExecutor(new lobbyCommand());
         getCommand("trash").setExecutor(new trashCommand());
+        getCommand("discord").setExecutor(new DiscordCommand());
 
 
 

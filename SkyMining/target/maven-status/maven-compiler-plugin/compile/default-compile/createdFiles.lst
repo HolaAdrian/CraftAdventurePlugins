@@ -8,6 +8,7 @@ me\adrian\skymining\Utility\SetScoreboard.class
 me\adrian\skymining\listeners\NoVoidListener.class
 me\adrian\skymining\listeners\VillagerTradeListener.class
 me\adrian\skymining\Utility\UpdateHaste.class
+me\adrian\skymining\commands\DiscordCommand.class
 me\adrian\skymining\listeners\PluginMessageLIstener.class
 me\adrian\skymining\SkyMining.class
 me\adrian\skymining\listeners\ConnectionListener.class

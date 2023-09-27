@@ -14,7 +14,7 @@ public class NoVoidListener implements Listener {
     public void onPlayerMove(PlayerMoveEvent event) {
 
 
-        Location spawn = new Location(Bukkit.getWorld("world"), 0, 100, 0, 180, 0);
+        Location spawn = new Location(Bukkit.getWorld("world"), 0.5, 102, -0.5, 0, 0);
 
 
         if (event.getFrom().getY() > event.getTo().getY()){

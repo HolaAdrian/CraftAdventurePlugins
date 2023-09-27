@@ -2,6 +2,7 @@ package me.adrian.craftadventurelobby.Listener;
 
 import me.adrian.craftadventurelobby.Lobby;
 import me.adrian.craftadventurelobby.Utility.Creator;
+import me.adrian.craftadventurelobby.Utility.ItemGetter;
 import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.HumanEntity;
@@ -39,6 +40,11 @@ public class KompassClickListener implements Listener {
                         if (Lobby.smasherrunning == false) {
                             if (StattMatchmaking.mp.isEmpty()) {
                                 StattMatchmaking.mp.add(player.getUniqueId());
+                                Player player1 = player;
+                                player1.setLevel(60);
+                                player1.sendActionBar(ChatColor.RED + "Countdown: 60");
+                                player.getInventory().clear();
+                                player.getInventory().setItem(8, ItemGetter.stopque());
                             } else {
                                 if (StattMatchmaking.mp.contains(player.getUniqueId())) {
                                     if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
@@ -53,6 +59,14 @@ public class KompassClickListener implements Listener {
                                     }
                                 } else {
                                     StattMatchmaking.mp.add(player.getUniqueId());
+                                    Player player1 = player;
+                                    player.getInventory().clear();
+                                    player.getInventory().setItem(8, ItemGetter.stopque());
+                                    if (StattMatchmaking.Cooldown != null){
+                                        Integer countdown = StattMatchmaking.Cooldown;
+                                        player1.setLevel(countdown);
+                                        player1.sendActionBar(ChatColor.GREEN + "Players: " + StattMatchmaking.mp.size() +  " " + " " + " Countdown: " + countdown);
+                                    }
                                 }
                             }
 

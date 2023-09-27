@@ -17,6 +17,8 @@ import java.util.UUID;
 
 public final class Smasher extends JavaPlugin {
 
+    public static HashMap<UUID, String> playerkit = new HashMap<>();
+
 
     public static void sendServer(Player player, String server) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

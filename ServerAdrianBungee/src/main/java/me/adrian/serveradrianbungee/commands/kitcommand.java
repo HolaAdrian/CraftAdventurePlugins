@@ -21,7 +21,7 @@ public class kitcommand extends Command {
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("ShowInventory");
             out.writeUTF(player.getUniqueId().toString());
-            player.getServer().sendData("bungeecord:kit", out.toByteArray());
+            player.getServer().sendData("bungeecord:kitchange", out.toByteArray());
 
 
         }

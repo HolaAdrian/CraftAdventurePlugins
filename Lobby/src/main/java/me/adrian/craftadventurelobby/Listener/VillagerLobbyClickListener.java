@@ -2,6 +2,7 @@ package me.adrian.craftadventurelobby.Listener;
 
 import me.adrian.craftadventurelobby.Lobby;
 import me.adrian.craftadventurelobby.Utility.Creator;
+import me.adrian.craftadventurelobby.Utility.ItemGetter;
 import me.adrian.craftadventurelobby.Utility.StattMatchmaking;
 import net.kyori.adventure.title.Title;
 import org.bukkit.Bukkit;
@@ -55,6 +56,11 @@ public class VillagerLobbyClickListener implements Listener {
                 if (Lobby.smasherrunning == false){
                     if (StattMatchmaking.mp.isEmpty()){
                         StattMatchmaking.mp.add(player.getUniqueId());
+                        Player player1 = player;
+                        player1.setLevel(60);
+                        player1.sendActionBar(ChatColor.RED + "Countdown: 60");
+                        player.getInventory().clear();
+                        player.getInventory().setItem(8, ItemGetter.stopque());
                     }
                     else {
                         if (StattMatchmaking.mp.contains(player.getUniqueId())){
@@ -70,6 +76,12 @@ public class VillagerLobbyClickListener implements Listener {
                         }
                         else {
                             StattMatchmaking.mp.add(player.getUniqueId());
+                            Player player1 = player;
+                            player.getInventory().clear();
+                            player.getInventory().setItem(8, ItemGetter.stopque());
+                            player1.sendActionBar(ChatColor.GREEN + "Que joined!");
+
+
                         }
                     }
 

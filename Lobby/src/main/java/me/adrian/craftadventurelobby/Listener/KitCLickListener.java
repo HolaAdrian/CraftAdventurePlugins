@@ -26,9 +26,9 @@ public class KitCLickListener implements Listener {
                         ByteArrayDataOutput out = ByteStreams.newDataOutput();
                         out.writeUTF("sendKit");
                         out.writeUTF(player.getUniqueId().toString());
-                        out.writeUTF("knockering");
+                        out.writeUTF("kit:knockering");
 
-                        player.sendPluginMessage(Lobby.main, "bungeecord:kit", out.toByteArray());
+                        player.sendPluginMessage(Lobby.main, "bungeecord:kitchange", out.toByteArray());
                         event.setCancelled(true);
 
 
@@ -51,9 +51,9 @@ public class KitCLickListener implements Listener {
                         ByteArrayDataOutput out = ByteStreams.newDataOutput();
                         out.writeUTF("sendKit");
                         out.writeUTF(player.getUniqueId().toString());
-                        out.writeUTF("spammer");
+                        out.writeUTF("kit:spammer");
 
-                        player.sendPluginMessage(Lobby.main, "bungeecord:kit", out.toByteArray());
+                        player.sendPluginMessage(Lobby.main, "bungeecord:kitchange", out.toByteArray());
                         event.setCancelled(true);
 
 
@@ -67,6 +67,26 @@ public class KitCLickListener implements Listener {
 
                     }
                 }
+                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED + "Assasine Sword")){
+
+                    Player player = (Player) event.getWhoClicked();
+
+
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                    out.writeUTF("sendKit");
+                    out.writeUTF(player.getUniqueId().toString());
+                    out.writeUTF("kit:assasine");
+
+                    player.sendPluginMessage(Lobby.main, "bungeecord:kitchange", out.toByteArray());
+                    event.setCancelled(true);
+
+
+                    player.closeInventory();
+
+                    player.sendMessage(ChatColor.GREEN + "Kit changed!");
+
+                }
+
             }
         }
     }

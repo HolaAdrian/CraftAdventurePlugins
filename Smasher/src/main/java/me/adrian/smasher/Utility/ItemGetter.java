@@ -8,6 +8,20 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemGetter {
 
+    public static ItemStack Assasine(){
+
+        ItemStack ks = new ItemStack(Material.STONE_SWORD);
+        ItemMeta ksm = ks.getItemMeta();
+
+
+        ksm.setDisplayName(ChatColor.RED + "Assasine Sword");
+        ksm.setUnbreakable(true);
+
+        ks.setItemMeta(ksm);
+
+        return ks;
+
+    }
     public static ItemStack Bow(){
 
         ItemStack bw = new ItemStack(Material.BOW);
@@ -33,7 +47,7 @@ public class ItemGetter {
 
 
         ksm.setDisplayName(ChatColor.DARK_PURPLE + "Knockback Stick");
-        ksm.addEnchant(Enchantment.KNOCKBACK, 3, true);
+        ksm.addEnchant(Enchantment.KNOCKBACK, 2, true);
 
         ks.setItemMeta(ksm);
 

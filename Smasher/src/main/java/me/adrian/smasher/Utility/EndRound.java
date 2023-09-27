@@ -4,6 +4,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.adrian.smasher.Listener.ConnectionListener;
 import me.adrian.smasher.Listener.PlayerDeathListener;
+import me.adrian.smasher.Listener.PlayerMoveListener;
 import me.adrian.smasher.Smasher;
 import me.adrian.smasher.commands.LobbyCommand;
 import org.bukkit.Bukkit;
@@ -32,9 +33,10 @@ public class EndRound {
 
         Smasher.lives.clear();
         Smasher.playingPlayers.clear();
-        PlayerDeathListener.lastonestanding = "Niemand";
+        PlayerMoveListener.lastonestanding = "Niemand";
         LobbyCommand.lastonestanding = "Niemand";
         ConnectionListener.lastonestanding = "Niemand";
+        Respawner.lastonestanding = "Niemand";
         Smasher.playersalive = 0;
         Smasher.deathPlayers.clear();
 

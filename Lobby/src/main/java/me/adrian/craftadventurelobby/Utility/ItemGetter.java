@@ -21,6 +21,20 @@ import java.util.UUID;
 
 public class ItemGetter {
 
+    public static ItemStack Assasine(){
+
+        ItemStack ks = new ItemStack(Material.STONE_SWORD);
+        ItemMeta ksm = ks.getItemMeta();
+
+
+        ksm.setDisplayName(ChatColor.RED + "Assasine Sword");
+
+        ks.setItemMeta(ksm);
+
+        return ks;
+
+    }
+
     public static ItemStack SkyMining(Player player){
         ItemStack kit = new ItemStack(Material.NETHERITE_PICKAXE);
         ItemMeta kitm = kit.getItemMeta();
@@ -188,7 +202,7 @@ public class ItemGetter {
 
 
         ksm.setDisplayName(ChatColor.DARK_PURPLE + "Knockback Stick");
-        ksm.addEnchant(Enchantment.KNOCKBACK, 3, true);
+        ksm.addEnchant(Enchantment.KNOCKBACK, 2, true);
 
         ks.setItemMeta(ksm);
 

@@ -14,3 +14,7 @@ commands:
       - hub
   trash:
     description: Open the trash
+  discord:
+    aliases:
+      - dc
+    description: Check out our Discord!

@@ -3,6 +3,8 @@ package me.adrian.smasher.Listener;
 import com.destroystokyo.paper.event.block.BlockDestroyEvent;
 import io.papermc.paper.event.block.BlockBreakBlockEvent;
 import me.adrian.smasher.Smasher;
+import me.adrian.smasher.Utility.Cooldown;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -31,6 +33,7 @@ public class PlayerInteractListener implements Listener {
                     Vector knockbackVector = new Vector(0, 2.35, 0);
                     player.setVelocity(knockbackVector);
                     Smasher.cooldown.put(player.getUniqueId(), 25);
+                    player.sendActionBar(ChatColor.GREEN + "Cooldown: 25");
                 }
             }
 

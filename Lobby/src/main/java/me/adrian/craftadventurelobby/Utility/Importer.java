@@ -22,8 +22,8 @@ public class Importer {
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "BungeeCord");
         main.getServer().getMessenger().registerIncomingPluginChannel(main, "between:smasherlobby", new BetweenListener());
 
-        main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:kit");
-        main.getServer().getMessenger().registerIncomingPluginChannel(main, "bungeecord:kit",new PluginMessagelistener());
+        main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:kitchange");
+        main.getServer().getMessenger().registerIncomingPluginChannel(main,"bungeecord:kitchange",new PluginMessagelistener());
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:lobby");
     }

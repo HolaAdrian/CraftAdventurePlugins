@@ -54,7 +54,7 @@ public class RespawnListener implements Listener {
         event.getPlayer().teleport(location);
 
 
-        int newInvulnerabilityDuration = 1;
+
         Smasher.cooldown.put(event.getPlayer().getUniqueId(), 0);
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
@@ -71,8 +71,11 @@ public class RespawnListener implements Listener {
         else{
             player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
         }
-
-        event.getPlayer().setNoDamageTicks(newInvulnerabilityDuration);
+        event.getPlayer().setMaximumNoDamageTicks(1);
+        event.getPlayer().setNoDamageTicks(1);
+        event.getPlayer().resetCooldown();
+        event.getPlayer().setInvulnerable(false);
+        event.getPlayer().resetPlayerTime();
 
 
     }

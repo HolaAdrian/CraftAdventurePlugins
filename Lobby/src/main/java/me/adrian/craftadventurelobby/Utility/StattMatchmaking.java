@@ -16,6 +16,8 @@ public class StattMatchmaking {
 
     private static Integer SCHEDU;
 
+    public static Integer Cooldown;
+
 
 
     public static void StartMatchmaking(){
@@ -67,6 +69,7 @@ public class StattMatchmaking {
                                                 player1.getInventory().setItem(8, ItemGetter.stopque());
 
                                         }
+                                        Cooldown = countdown;
                                         player1.setLevel(countdown);
                                         player1.sendActionBar(ChatColor.GREEN + "Players: " + mp.size() +  " " + " " + " Countdown: " + countdown);
                                     }
@@ -93,7 +96,6 @@ public class StattMatchmaking {
                         }
                     }
                 }, 0, 20);
-
 
 
     }

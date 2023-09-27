@@ -3,6 +3,7 @@ package me.adrian.smasher.Listener;
 import me.adrian.smasher.Smasher;
 import me.adrian.smasher.Utility.EndRound;
 import me.adrian.smasher.Utility.ItemGetter;
+import me.adrian.smasher.Utility.Respawner;
 import me.adrian.smasher.Utility.Sender;
 import me.adrian.smasher.commands.LobbyCommand;
 import org.bukkit.*;
@@ -29,49 +30,19 @@ public class ConnectionListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
-        Player playerkitter = event.getPlayer();
-
-        playerkitter.getInventory().setItem(1, ItemGetter.KnockbackStick());
-        ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
-        ItemMeta itemMeta = boot.getItemMeta();
-        itemMeta.setUnbreakable(true);
-        boot.setItemMeta(itemMeta);
-        playerkitter.getInventory().setBoots(boot);
+        Respawner.SetPlayerKits();
 
 
-        ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
-        ItemMeta itemMeta1 = chestplate.getItemMeta();
-        itemMeta1.setUnbreakable(true);
-        chestplate.setItemMeta(itemMeta1);
-        playerkitter.getInventory().setChestplate(chestplate);
 
 
-        ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
-        ItemMeta itemMeta2 = helm.getItemMeta();
-        itemMeta2.setUnbreakable(true);
-        helm.setItemMeta(itemMeta2);
-        playerkitter.getInventory().setHelmet(helm);
 
 
 
         event.setJoinMessage("");
         Player player = event.getPlayer();
 
-        UUID uuid = player.getUniqueId();
         Smasher.cooldown.put(player.getUniqueId(), 1);
-        if (Smasher.playerlanguage.containsKey(uuid)){
-            if (Smasher.playerlanguage.get(uuid).equals("de")){
-                player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
-
-            }
-            else if (Smasher.playerlanguage.get(uuid).equals("en")){
-                player.sendActionBar(ChatColor.GREEN + "No more cooldown!");
-
-            }
-        }
-        else{
-            player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
-        }
+        player.setLevel(0);
 
         Smasher.lives.put(player.getUniqueId(), 10);
         UUID uniqueId = player.getUniqueId();
@@ -81,24 +52,12 @@ public class ConnectionListener implements Listener {
 
 
 
-        FileConfiguration config = Smasher.main.getConfig();
-        if (config == null)
-            return;
 
 
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999, 0));
 
-        Integer integer = Smasher.randomGenerator(1, 8);
-
-        Double x = config.getDouble("location" + integer + ".x");
-        Double y = config.getDouble("location" + integer + ".y");
-        Double z = config.getDouble("location" + integer + ".z");
-        Float yaw = (float) config.getDouble("location" + integer + ".yaw");
-        Float pitch = (float) config.getDouble("location" + integer + ".pitch");
-
-        Location location = new Location(Bukkit.getWorld("world"), x, y, z ,yaw, pitch);
-        player.teleport(location);
+        Respawner.Teleport(player);
         player.setGameMode(GameMode.SURVIVAL);
 
         Smasher.playersalive = Smasher.playersalive +1;
