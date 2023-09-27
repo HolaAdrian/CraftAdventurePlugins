@@ -25,7 +25,8 @@ public class KitKlickListener implements Listener {
                         inventory.setItem(0, ItemGetter.KnockbackStick());
                         inventory.setItem(1, ItemGetter.Bow());
                         inventory.setItem(2, ItemGetter.Assasine());
-
+                        inventory.setItem(3, ItemGetter.axeKit());
+                        inventory.setItem(4, ItemGetter.TankStick(player));
                         player.openInventory(inventory);
                     }
                 }

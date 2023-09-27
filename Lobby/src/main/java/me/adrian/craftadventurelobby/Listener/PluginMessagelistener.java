@@ -64,6 +64,8 @@ public class PluginMessagelistener implements PluginMessageListener {
                     inventory.setItem(0, ItemGetter.KnockbackStick());
                     inventory.setItem(1, ItemGetter.Bow());
                     inventory.setItem(2, ItemGetter.Assasine());
+                    inventory.setItem(3, ItemGetter.axeKit());
+                    inventory.setItem(4, ItemGetter.TankStick(player1));
 
                     player1.openInventory(inventory);
 

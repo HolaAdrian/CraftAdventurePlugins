@@ -27,7 +27,7 @@ public class ItemGetter {
         ItemMeta ksm = ks.getItemMeta();
 
 
-        ksm.setDisplayName(ChatColor.RED + "Assasine Sword");
+        ksm.setDisplayName(ChatColor.RED + "Assasine Kit");
 
         ks.setItemMeta(ksm);
 
@@ -178,13 +178,25 @@ public class ItemGetter {
         return b;
 
     }
+    public static ItemStack axeKit(){
+        ItemStack bw = new ItemStack(Material.WOODEN_AXE);
+        ItemMeta bwm = bw.getItemMeta();
+
+        bwm.setDisplayName(ChatColor.DARK_BLUE + "Axe Kit");
+
+
+        bw.setItemMeta(bwm);
+
+        return bw;
+
+    }
 
     public static ItemStack Bow(){
 
         ItemStack bw = new ItemStack(Material.BOW);
         ItemMeta bwm = bw.getItemMeta();
 
-        bwm.setDisplayName(ChatColor.GOLD + "Spammer-Bow");
+        bwm.setDisplayName(ChatColor.GOLD + "Spammer Kit");
         bwm.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
         bwm.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
 
@@ -201,8 +213,38 @@ public class ItemGetter {
         ItemMeta ksm = ks.getItemMeta();
 
 
-        ksm.setDisplayName(ChatColor.DARK_PURPLE + "Knockback Stick");
+        ksm.setDisplayName(ChatColor.DARK_PURPLE + "Knockback Kit");
         ksm.addEnchant(Enchantment.KNOCKBACK, 2, true);
+
+        ks.setItemMeta(ksm);
+
+        return ks;
+
+    }
+    public static ItemStack TankStick(Player player){
+
+        ItemStack ks = new ItemStack(Material.HEART_OF_THE_SEA);
+        ItemMeta ksm = ks.getItemMeta();
+
+
+        ksm.setDisplayName(ChatColor.RED + "Tank Kit");
+        ksm.addEnchant(Enchantment.KNOCKBACK, 4, true);
+
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add("");
+        if (Lobby.playerlanguage.containsKey(player.getUniqueId())){
+            if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")){
+                lore.add("Mehr knockback aber weniger Leben (5)!");
+            }
+            else if (Lobby.playerlanguage.get(player.getUniqueId()).equals("en")){
+                lore.add("More knockback but less health (5)!");
+            }
+        }
+        else{
+            lore.add("Mehr knockback aber weniger Leben (5)!");
+        }
+        lore.add("");
+        ksm.setLore(lore);
 
         ks.setItemMeta(ksm);
 

@@ -17,7 +17,7 @@ public class KitCLickListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getCurrentItem() != null){
             if (event.getCurrentItem().getItemMeta() != null) {
-                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + "Knockback Stick")) {
+                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_PURPLE + "Knockback Kit")) {
                     if (event.getWhoClicked() instanceof Player) {
 
                         Player player = (Player) event.getWhoClicked();
@@ -42,7 +42,32 @@ public class KitCLickListener implements Listener {
 
                     }
                 }
-                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "Spammer-Bow")) {
+                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_BLUE + "Axe Kit")){
+                    if (event.getWhoClicked() instanceof Player) {
+
+                        Player player = (Player) event.getWhoClicked();
+
+
+                        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                        out.writeUTF("sendKit");
+                        out.writeUTF(player.getUniqueId().toString());
+                        out.writeUTF("kit:axe");
+
+                        player.sendPluginMessage(Lobby.main, "bungeecord:kitchange", out.toByteArray());
+                        event.setCancelled(true);
+
+
+                        player.closeInventory();
+
+                        player.sendMessage(ChatColor.GREEN + "Kit changed!");
+
+
+
+
+
+                    }
+                }
+                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "Spammer Kit")) {
                     if (event.getWhoClicked() instanceof Player) {
 
                         Player player = (Player) event.getWhoClicked();
@@ -67,7 +92,7 @@ public class KitCLickListener implements Listener {
 
                     }
                 }
-                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED + "Assasine Sword")){
+                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED + "Assasine Kit")){
 
                     Player player = (Player) event.getWhoClicked();
 
@@ -85,6 +110,23 @@ public class KitCLickListener implements Listener {
 
                     player.sendMessage(ChatColor.GREEN + "Kit changed!");
 
+                }
+                if (event.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED + "Tank Kit")){
+                    Player player = (Player) event.getWhoClicked();
+
+
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                    out.writeUTF("sendKit");
+                    out.writeUTF(player.getUniqueId().toString());
+                    out.writeUTF("kit:tank");
+
+                    player.sendPluginMessage(Lobby.main, "bungeecord:kitchange", out.toByteArray());
+                    event.setCancelled(true);
+
+
+                    player.closeInventory();
+
+                    player.sendMessage(ChatColor.GREEN + "Kit changed!");
                 }
 
             }
