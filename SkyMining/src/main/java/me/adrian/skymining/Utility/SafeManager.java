@@ -15,6 +15,8 @@ import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -24,9 +26,10 @@ public class SafeManager {
 
     public static ItemStack ENGLAND(){
 
-        ItemStack b = new ItemStack(Material.WHITE_BANNER);
-        BannerMeta bannerMeta = (BannerMeta) b.getItemMeta();
-        bannerMeta.addPattern(new Pattern(DyeColor.RED, PatternType.CROSS));
+        ItemStack b = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta bannerMeta = (SkullMeta) b.getItemMeta();
+        PlayerProfile profile = Creator.getProfile("http://textures.minecraft.net/texture/408a5f662ba616821c7523e7297ef870be83a16fd962c131fd9d5c1998cbe936");
+        bannerMeta.setOwnerProfile(profile);
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("");
@@ -47,10 +50,10 @@ public class SafeManager {
 
     public static ItemStack German(){
 
-        ItemStack b = new ItemStack(Material.RED_BANNER);
-        BannerMeta bannerMeta = (BannerMeta) b.getItemMeta();
-        bannerMeta.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP));
-        bannerMeta.addPattern(new Pattern(DyeColor.YELLOW, PatternType.STRIPE_BOTTOM));
+        ItemStack b = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta bannerMeta = (SkullMeta) b.getItemMeta();
+        PlayerProfile profile = Creator.getProfile("http://textures.minecraft.net/texture/5c27bd8752b9e30051cdfb147515273c82d5a553f06bb6a23920e801f0ac843a");
+        bannerMeta.setOwnerProfile(profile);
 
 
         ArrayList<String> lore = new ArrayList<>();
@@ -59,6 +62,7 @@ public class SafeManager {
         lore.add("");
         bannerMeta.setLore(lore);
         bannerMeta.setDisplayName(ChatColor.WHITE + "Deutsch");
+
 
         b.setItemMeta(bannerMeta);
 
@@ -98,43 +102,8 @@ public class SafeManager {
     }
 
 
-    public static void SafeAll(FileConfiguration file){
-
-        file.set("new", true);
-
-        for (UUID p: SkyMining.haste.keySet()){
-            file.set("haste." + p, SkyMining.haste.get(p));
-
-        }
 
 
-        SkyMining.main.saveConfig();
-
-
-
-
-    }
-
-    public static void LoadAll(FileConfiguration file){
-
-
-        if (file.getConfigurationSection("haste") != null){
-            for (String p: file.getConfigurationSection("haste").getKeys(false)){
-                UUID UUIDp = UUID.fromString(p);
-                Integer haste = file.getInt("haste." + p);
-                SkyMining.haste.put(UUIDp, haste);
-            }
-
-
-
-        }
-
-
-
-
-
-
-    }
 
 
 

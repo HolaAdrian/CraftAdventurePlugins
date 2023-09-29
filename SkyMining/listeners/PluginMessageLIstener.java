@@ -3,7 +3,6 @@ package me.adrian.skymining.listeners;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import me.adrian.skymining.SkyMining;
-import me.adrian.skymining.Utility.SafeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;

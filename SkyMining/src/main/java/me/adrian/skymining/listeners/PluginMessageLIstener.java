@@ -6,7 +6,6 @@ import me.adrian.skymining.SkyMining;
 import me.adrian.skymining.Utility.SafeManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.jetbrains.annotations.NotNull;

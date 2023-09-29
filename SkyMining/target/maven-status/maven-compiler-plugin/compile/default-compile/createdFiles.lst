@@ -3,6 +3,7 @@ me\adrian\skymining\listeners\ConnectionListener$1.class
 me\adrian\skymining\SkyMining$1.class
 me\adrian\skymining\commands\restore.class
 me\adrian\skymining\listeners\NoShitListener.class
+me\adrian\skymining\Utility\SaveManager.class
 me\adrian\skymining\listeners\ParkourListener.class
 me\adrian\skymining\Utility\SetScoreboard.class
 me\adrian\skymining\listeners\NoVoidListener.class
@@ -16,6 +17,7 @@ me\adrian\skymining\commands\lobbyCommand.class
 me\adrian\skymining\listeners\LanguageInventoryClick.class
 me\adrian\skymining\listeners\BuildDestroyListener.class
 me\adrian\skymining\listeners\ConnectionListener$2.class
+me\adrian\skymining\commands\PvpCommand.class
 me\adrian\skymining\listeners\DeathDropListener.class
 me\adrian\skymining\listeners\HasteListener.class
 me\adrian\skymining\commands\trashCommand.class
@@ -23,3 +25,5 @@ me\adrian\skymining\Utility\SafeManager.class
 me\adrian\skymining\listeners\NoFoodListener.class
 me\adrian\skymining\listeners\GoodVillagerTradeListener.class
 me\adrian\skymining\listeners\NoSuffocation.class
+me\adrian\skymining\listeners\YesNoPvpListener.class
+me\adrian\skymining\Utility\Creator.class

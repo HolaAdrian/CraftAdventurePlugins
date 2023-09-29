@@ -1,6 +1,6 @@
 package me.adrian.skymining;
 
-import me.adrian.skymining.Utility.SafeManager;
+import me.adrian.skymining.Utility.SaveManager;
 import me.adrian.skymining.commands.*;
 import me.adrian.skymining.listeners.*;
 import org.bukkit.Bukkit;
@@ -8,7 +8,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,6 +41,8 @@ public final class SkyMining extends JavaPlugin{
 
     public static HashMap<UUID, Integer> haste = new HashMap<>();
 
+    public static HashMap<UUID, Boolean> pvpon = new HashMap<>();
+
 
 
 
@@ -58,6 +59,7 @@ public final class SkyMining extends JavaPlugin{
         pluginManager.registerEvents(new NoFoodListener(), plugin);
         pluginManager.registerEvents(new NoSuffocation(), plugin);
         pluginManager.registerEvents(new DeathDropListener(), plugin);
+        pluginManager.registerEvents(new YesNoPvpListener(), plugin);
     }
 
 
@@ -67,6 +69,12 @@ public final class SkyMining extends JavaPlugin{
 
     @Override
     public void onEnable() {
+        if (getConfig().isSet("new")){
+            SaveManager.LoadAll(getConfig());
+        }
+        else {
+            saveDefaultConfig();
+        }
 
         getServer().getMessenger().registerOutgoingPluginChannel(this, "bungeecord:language");
         getServer().getMessenger().registerIncomingPluginChannel(this, "bungeecord:language", new PluginMessageLIstener());
@@ -83,13 +91,6 @@ public final class SkyMining extends JavaPlugin{
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
             public void run() {
-
-
-
-
-
-
-
                 if (!chunk.isLoaded()) {
                     chunk.load();
                 }
@@ -98,12 +99,7 @@ public final class SkyMining extends JavaPlugin{
 
         main = this;
 
-        if (getConfig().isSet("new")){
-            SafeManager.LoadAll(getConfig());
-        }
-        else {
-            saveDefaultConfig();
-        }
+
 
 
         PluginManager pluginManager = Bukkit.getPluginManager();
@@ -114,6 +110,7 @@ public final class SkyMining extends JavaPlugin{
         getCommand("lobby").setExecutor(new lobbyCommand());
         getCommand("trash").setExecutor(new trashCommand());
         getCommand("discord").setExecutor(new DiscordCommand());
+        getCommand("pvp").setExecutor(new PvpCommand());
 
 
 
@@ -126,6 +123,6 @@ public final class SkyMining extends JavaPlugin{
 
 
 
-        SafeManager.SafeAll(getConfig());
+        SaveManager.SaveAll(getConfig());
     }
 }

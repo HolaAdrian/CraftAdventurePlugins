@@ -1,7 +1,6 @@
 package me.adrian.skymining.listeners;
 
 import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
-import me.adrian.skymining.Utility.SafeManager;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;

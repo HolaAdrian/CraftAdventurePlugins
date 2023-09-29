@@ -4,7 +4,6 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.adrian.skymining.SkyMining;
 
-import me.adrian.skymining.Utility.SafeManager;
 import me.adrian.skymining.Utility.SetScoreboard;
 import me.adrian.skymining.Utility.UpdateHaste;
 import org.bukkit.Bukkit;

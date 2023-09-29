@@ -1,6 +1,5 @@
 package me.adrian.skymining;
 
-import me.adrian.skymining.Utility.SafeManager;
 import me.adrian.skymining.commands.lobbyCommand;
 import me.adrian.skymining.commands.restore;
 import me.adrian.skymining.commands.trashCommand;

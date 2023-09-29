@@ -19,7 +19,7 @@ public class ParkourListener implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
 
-        Location spawn = new Location(Bukkit.getWorld("world"), 0, 100, 0, 180, 0);
+        Location spawn = new Location(Bukkit.getWorld("world"), 0.5, 102, -0.5, 0, 0);
 
 
         if (event.getAction().equals(Action.PHYSICAL)){

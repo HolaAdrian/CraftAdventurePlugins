@@ -18,3 +18,5 @@ commands:
     aliases:
       - dc
     description: Check out our Discord!
+  pvp:
+    description: Enable/Disable your pvp

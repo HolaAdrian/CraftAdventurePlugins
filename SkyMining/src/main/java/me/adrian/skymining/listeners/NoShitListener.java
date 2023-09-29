@@ -1,25 +1,17 @@
 package me.adrian.skymining.listeners;
 
-import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
-import me.adrian.skymining.Utility.SafeManager;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.inventory.*;
-import org.bukkit.event.player.PlayerChangedMainHandEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerSwapHandItemsEvent;
-import org.bukkit.inventory.CraftingInventory;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.lang.reflect.Type;
 
 public class NoShitListener implements Listener {
 
@@ -48,6 +40,9 @@ public class NoShitListener implements Listener {
 
     @EventHandler
     public void onPrepareItemCraft(PrepareItemCraftEvent event) {
+        if (event.getRecipe() == null){
+            return;
+        }
         if (event.getRecipe().getResult() != null){
             event.getRecipe().getResult().setType(Material.AIR);
             event.getInventory().setResult(new ItemStack(Material.AIR));
@@ -68,20 +63,31 @@ public class NoShitListener implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getCurrentItem() != null){
-            if (event.getCurrentItem().getType().equals(Material.BLAZE_ROD)){
-                event.setCancelled(true);
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        if (event != null){
+            if (event.getClickedBlock()!= null){
+                if (event.getClickedBlock().getType().equals(Material.MANGROVE_TRAPDOOR)){
+                    if (!event.getPlayer().getGameMode().equals(GameMode.CREATIVE)){
+                        event.setCancelled(true);
+                    }
+
+                }
             }
         }
+
+
+
     }
 
     @EventHandler
     public void onInventoryMoveItem(InventoryDragEvent event) {
-        if (event.getCursor().getType() != null){
-            if (event.getCursor().getType().equals(Material.BLAZE_ROD)){
-                event.setCancelled(true);
+        if (event.getCursor() != null){
+            if (event.getCursor().getType() != null){
+                if (event.getCursor().getType().equals(Material.BLAZE_ROD)){
+                    event.setCancelled(true);
+                }
             }
         }
+
     }
 }

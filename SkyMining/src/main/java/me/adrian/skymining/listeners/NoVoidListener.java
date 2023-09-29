@@ -16,15 +16,12 @@ public class NoVoidListener implements Listener {
 
         Location spawn = new Location(Bukkit.getWorld("world"), 0.5, 102, -0.5, 0, 0);
 
-
-        if (event.getFrom().getY() > event.getTo().getY()){
-            if (event.getTo().getY() < 70){
+            if (event.getTo().getY() < 70|| event.getTo().getY() > 200){
                 if (event.getPlayer().getGameMode() != GameMode.CREATIVE){
                     event.getPlayer().teleport(spawn);
                 }
 
 
             }
-        }
     }
 }

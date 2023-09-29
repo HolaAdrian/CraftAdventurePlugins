@@ -1,7 +1,5 @@
 package me.adrian.skymining.listeners;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import me.adrian.skymining.SkyMining;
 
 import me.adrian.skymining.Utility.SafeManager;
@@ -16,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Objective;
 
 public class ConnectionListener implements Listener {
@@ -61,6 +57,10 @@ public class ConnectionListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
 
+        if (!SkyMining.pvpon.containsKey(event.getPlayer().getUniqueId())){
+            SkyMining.pvpon.put(event.getPlayer().getUniqueId(), true);
+        }
+
 
         Player player = event.getPlayer();
         player.getInventory().setHeldItemSlot(0);
@@ -74,7 +74,7 @@ public class ConnectionListener implements Listener {
 
 
         if (event.getPlayer().getInventory().contains(Material.BLAZE_ROD) != true){
-            event.getPlayer().getInventory().addItem( SafeManager.hasteItem());
+            event.getPlayer().getInventory().addItem(SafeManager.hasteItem());
             SCHEDU = Bukkit.getScheduler().scheduleSyncRepeatingTask(SkyMining.main, new Runnable() {
                 @Override
                 public void run() {
