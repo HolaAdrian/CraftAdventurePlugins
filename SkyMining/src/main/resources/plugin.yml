@@ -20,3 +20,8 @@ commands:
     description: Check out our Discord!
   pvp:
     description: Enable/Disable your pvp
+  joinme:
+    description: Send an joinme
+    aliases:
+      - jm
+    permission: skymining.joinme

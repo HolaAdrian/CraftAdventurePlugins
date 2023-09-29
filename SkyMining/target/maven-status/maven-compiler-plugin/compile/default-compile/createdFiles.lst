@@ -1,4 +1,5 @@
 me\adrian\skymining\commands\villagerrestore.class
+me\adrian\skymining\commands\JoinmeCommand.class
 me\adrian\skymining\listeners\ConnectionListener$1.class
 me\adrian\skymining\SkyMining$1.class
 me\adrian\skymining\commands\restore.class

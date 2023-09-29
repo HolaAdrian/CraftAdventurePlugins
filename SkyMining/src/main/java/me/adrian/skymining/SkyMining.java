@@ -79,6 +79,7 @@ public final class SkyMining extends JavaPlugin{
         getServer().getMessenger().registerOutgoingPluginChannel(this, "bungeecord:language");
         getServer().getMessenger().registerIncomingPluginChannel(this, "bungeecord:language", new PluginMessageLIstener());
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "bungeecord:joinme");
 
 
         World world = Bukkit.getWorld("world");
@@ -111,7 +112,7 @@ public final class SkyMining extends JavaPlugin{
         getCommand("trash").setExecutor(new trashCommand());
         getCommand("discord").setExecutor(new DiscordCommand());
         getCommand("pvp").setExecutor(new PvpCommand());
-
+        getCommand("joinme").setExecutor(new JoinmeCommand());
 
 
 
