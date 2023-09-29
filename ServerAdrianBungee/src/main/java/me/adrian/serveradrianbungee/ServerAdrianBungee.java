@@ -3,11 +3,11 @@ package me.adrian.serveradrianbungee;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import me.adrian.serveradrianbungee.commands.creditscommand;
-import me.adrian.serveradrianbungee.commands.kitcommand;
-import me.adrian.serveradrianbungee.commands.lobbycommand;
-import me.adrian.serveradrianbungee.commands.versioncommand;
+import me.adrian.serveradrianbungee.commands.*;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.*;
@@ -35,6 +35,8 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
     private File file;
     private Configuration configuration;
 
+    public static ServerAdrianBungee main;
+
 
 
 
@@ -44,6 +46,7 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
 
     @Override
     public void onEnable() {
+        main = this;
 
 
         file = new File(ProxyServer.getInstance().getPluginsFolder() + "/config.yml");
@@ -96,12 +99,13 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
         getProxy().registerChannel("between:smasherlobby");
         getProxy().registerChannel("bungeecord:lobby");
         getProxy().registerChannel("bungeecord:kitchange");
+        getProxy().registerChannel("bungeecord:joinme");
         getProxy().getPluginManager().registerListener(this, this);
         getProxy().getPluginManager().registerCommand(this, new lobbycommand());
         getProxy().getPluginManager().registerCommand(this, new kitcommand());
         getProxy().getPluginManager().registerCommand(this, new creditscommand());
         getProxy().getPluginManager().registerCommand(this, new versioncommand());
-
+        getProxy().getPluginManager().registerCommand(this, new skymining());
 
 
 
@@ -197,6 +201,19 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
 
         @EventHandler(priority = EventPriority.HIGHEST)
         public void onPluginMessageReceived (PluginMessageEvent event){
+            if (event.getTag().equals("bungeecord:joinme")){
+                ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
+                String name = in.readUTF();
+                String server = in.readUTF();
+                for (ProxiedPlayer p: getProxy().getPlayers()){
+                    TextComponent textComponent = new TextComponent(ChatColor.DARK_PURPLE + name + ChatColor.GREEN + " spielt auf " + ChatColor.GOLD +server + ChatColor.GREEN + "! Klicke um zu joinen!");
+                    textComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/skymining"));
+                    p.sendMessage(textComponent);
+                }
+
+            }
+
+
 
             if (event.getTag().equals("bungeecord:lobby")) {
                 ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
