@@ -30,19 +30,7 @@ public final class Lobby extends JavaPlugin {
 
 
 
-    public static void sendServerQuit(Player player, String server) {
-        if (player == null)
-            return;
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
-        try {
-            dataOutputStream.writeUTF("Connect");
-            dataOutputStream.writeUTF(server);
-        } catch (IOException ignored) {
-        }
-        player.sendPluginMessage(main, "BungeeCord", byteArrayOutputStream.toByteArray());
-        player.sendMessage(ChatColor.GREEN + "Connecting to server...");
-    }
+
 
 
 

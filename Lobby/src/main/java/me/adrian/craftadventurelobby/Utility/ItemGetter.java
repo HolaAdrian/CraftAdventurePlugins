@@ -1,5 +1,4 @@
 package me.adrian.craftadventurelobby.Utility;
-import com.destroystokyo.paper.profile.PlayerProfile;
 import me.adrian.craftadventurelobby.Lobby;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -13,9 +12,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.profile.PlayerProfile;
 import org.bukkit.profile.PlayerTextures;
 
 import java.lang.reflect.Field;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -124,9 +128,13 @@ public class ItemGetter {
 
 
     public static ItemStack head(){
+
+
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta headm = (SkullMeta) head.getItemMeta();
-        headm.setOwner("TheJohannCrafter");
+        PlayerProfile profile = Creator.getProfile("http://textures.minecraft.net/texture/259e8d4196fea827025c2927a6fcd6e98d030057371238a77ae4cddebce86477");
+        headm.setOwnerProfile(profile);
+
         headm.setDisplayName(ChatColor.GOLD + "Language/Sprache");
         ArrayList<String> lore = new ArrayList<>();
         lore.add("");
@@ -136,10 +144,6 @@ public class ItemGetter {
         lore.add("");
         headm.setLore(lore);
         head.setItemMeta(headm);
-
-
-
-
 
 
         return head;
@@ -158,9 +162,10 @@ public class ItemGetter {
     }
     public static ItemStack ENGLAND(){
 
-        ItemStack b = new ItemStack(Material.WHITE_BANNER);
-        BannerMeta bannerMeta = (BannerMeta) b.getItemMeta();
-        bannerMeta.addPattern(new Pattern(DyeColor.RED, PatternType.CROSS));
+        ItemStack b = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta bannerMeta = (SkullMeta) b.getItemMeta();
+        PlayerProfile profile = Creator.getProfile("http://textures.minecraft.net/texture/408a5f662ba616821c7523e7297ef870be83a16fd962c131fd9d5c1998cbe936");
+        bannerMeta.setOwnerProfile(profile);
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("");
@@ -258,10 +263,10 @@ public class ItemGetter {
 
     public static ItemStack German(){
 
-        ItemStack b = new ItemStack(Material.RED_BANNER);
-        BannerMeta bannerMeta = (BannerMeta) b.getItemMeta();
-        bannerMeta.addPattern(new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP));
-        bannerMeta.addPattern(new Pattern(DyeColor.YELLOW, PatternType.STRIPE_BOTTOM));
+        ItemStack b = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta bannerMeta = (SkullMeta) b.getItemMeta();
+        PlayerProfile profile = Creator.getProfile("http://textures.minecraft.net/texture/5c27bd8752b9e30051cdfb147515273c82d5a553f06bb6a23920e801f0ac843a");
+        bannerMeta.setOwnerProfile(profile);
 
 
         ArrayList<String> lore = new ArrayList<>();
@@ -270,6 +275,7 @@ public class ItemGetter {
         lore.add("");
         bannerMeta.setLore(lore);
         bannerMeta.setDisplayName(ChatColor.WHITE + "Deutsch");
+
 
         b.setItemMeta(bannerMeta);
 

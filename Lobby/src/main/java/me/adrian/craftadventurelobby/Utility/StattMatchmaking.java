@@ -7,6 +7,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -81,7 +84,16 @@ public class StattMatchmaking {
 
                                 for (UUID uuid : mp) {
                                     Player player1 = Bukkit.getPlayer(uuid);
-                                    Lobby.sendServerQuit(player1, "smasher");
+                                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                                    DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
+                                    try {
+                                        dataOutputStream.writeUTF("Connect");
+                                        dataOutputStream.writeUTF("smasher");
+                                    } catch (IOException ignored) {
+                                    }
+                                    player1.sendPluginMessage(Lobby.main, "BungeeCord", byteArrayOutputStream.toByteArray());
+
+
                                     player1.setLevel(0);
                                     mp.remove(player1);
 
