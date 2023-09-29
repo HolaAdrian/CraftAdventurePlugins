@@ -17,7 +17,6 @@ me\adrian\smasher\Utility\Respawner$1.class
 me\adrian\smasher\Utility\Cooldown$1.class
 me\adrian\smasher\Listener\NoShitListener.class
 me\adrian\smasher\Listener\PlayerMoveListener.class
-me\adrian\smasher\Utility\EndRound$1.class
 me\adrian\smasher\Listener\BreakPlaceListener.class
 me\adrian\smasher\Listener\ConnectionListener.class
 me\adrian\smasher\Utility\Respawner.class

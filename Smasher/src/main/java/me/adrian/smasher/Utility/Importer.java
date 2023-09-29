@@ -24,7 +24,6 @@ public class Importer {
         pluginManager.registerEvents(new PlayerDeathListener(), plugin);
         pluginManager.registerEvents(new BreakPlaceListener(), plugin);
         pluginManager.registerEvents(new PlayerInteractListener(), plugin);
-        pluginManager.registerEvents(new PlayerKillListener(), plugin);
 
 
 

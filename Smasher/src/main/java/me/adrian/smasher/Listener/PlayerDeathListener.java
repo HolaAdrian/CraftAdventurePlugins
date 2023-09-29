@@ -27,6 +27,30 @@ public class PlayerDeathListener implements Listener {
         Respawner.TeleportAsynch(player);
         Respawner.RemoveLife(player);
         player.setHealth(20);
+
+        if (event.getPlayer().getKiller() != null){
+            if (event.getPlayer().getKiller() instanceof Player){
+                Player Death = event.getPlayer();
+                Player Killer = Death.getKiller();
+                Killer.setHealth(Killer.getMaxHealth());
+                Smasher.cooldown.put(Killer.getUniqueId(), 0);
+                UUID uuid = Killer.getUniqueId();
+                if (Smasher.playerlanguage.containsKey(uuid)){
+                    if (Smasher.playerlanguage.get(uuid).equals("de")){
+                        Killer.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
+                    }
+                    else if (Smasher.playerlanguage.get(uuid).equals("en")){
+                        Killer.sendActionBar(ChatColor.GREEN + "No more cooldown!");
+                    }
+                }
+                else{
+                    Killer.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
+                }
+
+
+            }
+
+        }
     }
 
 

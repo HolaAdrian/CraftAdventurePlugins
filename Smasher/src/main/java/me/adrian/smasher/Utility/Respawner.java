@@ -134,28 +134,6 @@ public class Respawner {
                     leggings.setItemMeta(itemMeta3);
                     playerkitter.getInventory().setLeggings(leggings);
                 }
-                else {
-                    playerkitter.getInventory().setItem(0, ItemGetter.KnockbackStick());
-                    ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
-                    ItemMeta itemMeta = boot.getItemMeta();
-                    itemMeta.setUnbreakable(true);
-                    boot.setItemMeta(itemMeta);
-                    playerkitter.getInventory().setBoots(boot);
-
-
-                    ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
-                    ItemMeta itemMeta1 = chestplate.getItemMeta();
-                    itemMeta1.setUnbreakable(true);
-                    chestplate.setItemMeta(itemMeta1);
-                    playerkitter.getInventory().setChestplate(chestplate);
-
-
-                    ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
-                    ItemMeta itemMeta2 = helm.getItemMeta();
-                    itemMeta2.setUnbreakable(true);
-                    helm.setItemMeta(itemMeta2);
-                    playerkitter.getInventory().setHelmet(helm);
-                }
             }
         }
 
