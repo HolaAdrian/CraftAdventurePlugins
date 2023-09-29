@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.UUID;
+
 public class Respawner {
 
     public static String lastonestanding = "Niemand";
@@ -132,6 +134,28 @@ public class Respawner {
                     leggings.setItemMeta(itemMeta3);
                     playerkitter.getInventory().setLeggings(leggings);
                 }
+                else {
+                    playerkitter.getInventory().setItem(0, ItemGetter.KnockbackStick());
+                    ItemStack boot = new ItemStack(Material.LEATHER_BOOTS);
+                    ItemMeta itemMeta = boot.getItemMeta();
+                    itemMeta.setUnbreakable(true);
+                    boot.setItemMeta(itemMeta);
+                    playerkitter.getInventory().setBoots(boot);
+
+
+                    ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
+                    ItemMeta itemMeta1 = chestplate.getItemMeta();
+                    itemMeta1.setUnbreakable(true);
+                    chestplate.setItemMeta(itemMeta1);
+                    playerkitter.getInventory().setChestplate(chestplate);
+
+
+                    ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
+                    ItemMeta itemMeta2 = helm.getItemMeta();
+                    itemMeta2.setUnbreakable(true);
+                    helm.setItemMeta(itemMeta2);
+                    playerkitter.getInventory().setHelmet(helm);
+                }
             }
         }
 
@@ -177,6 +201,23 @@ public class Respawner {
     }
 
     public static void RemoveLife(Player player){
+        double maxHealth = player.getMaxHealth();
+        Smasher.cooldown.put(player.getUniqueId(), 0);
+        UUID uuid = player.getUniqueId();
+        if (Smasher.playerlanguage.containsKey(uuid)){
+            if (Smasher.playerlanguage.get(uuid).equals("de")){
+                player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
+
+            }
+            else if (Smasher.playerlanguage.get(uuid).equals("en")){
+                player.sendActionBar(ChatColor.GREEN + "No more cooldown!");
+
+            }
+        }
+        else{
+            player.sendActionBar(ChatColor.GREEN + "Kein Cooldown mehr!");
+        }
+        player.setHealth(maxHealth);
         if (Smasher.lives.containsKey(player.getUniqueId())){
             Integer integer = Smasher.lives.get(player.getUniqueId());
             Integer livesafter = integer -1;

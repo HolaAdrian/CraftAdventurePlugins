@@ -31,6 +31,7 @@ public class ConnectionListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
 
 
+        event.getPlayer().setMaxHealth(20);
         event.getPlayer().setHealth(20);
 
         Respawner.SetPlayerKits();

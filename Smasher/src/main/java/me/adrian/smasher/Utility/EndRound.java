@@ -43,26 +43,24 @@ public class EndRound {
         Smasher.deathPlayers.clear();
 
         for (Player p: Bukkit.getOnlinePlayers()){
-            Bukkit.getScheduler().scheduleAsyncDelayedTask(Smasher.main, new Runnable() {
-                @Override
-                public void run() {
-                    if (Smasher.playerlanguage.containsKey(p.getUniqueId())) {
-                        if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")) {
-                            p.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline!");
-                        } else if (Smasher.playerlanguage.get(p.getUniqueId()).equals("en")) {
-                            p.kickPlayer("The Lobby couldn't be reached! It most likely is offline!");
-                        }
-                    } else {
-                        p.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline!");
-                    }
+
+
+
+            if (Smasher.playerlanguage.containsKey(p.getUniqueId())) {
+                if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")) {
+                    p.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline oder in Wartungsarbeiten!");
+                } else if (Smasher.playerlanguage.get(p.getUniqueId()).equals("en")) {
+                    p.kickPlayer("The Lobby couldn't be reached! It most likely is offline or under maintenance!");
                 }
-            }, 20);
+            } else {
+                p.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline oder in Wartungsarbeiten!");
+            }
+
+
+
 
         }
 
-
-
-        return;
-    }
+        }
 
 }

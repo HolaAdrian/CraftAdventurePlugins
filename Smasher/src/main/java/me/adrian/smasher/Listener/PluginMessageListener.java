@@ -5,6 +5,9 @@ import com.google.common.io.ByteStreams;
 import me.adrian.smasher.Smasher;
 import me.adrian.smasher.Utility.ItemGetter;
 import me.adrian.smasher.Utility.Respawner;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -36,6 +39,26 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
+            }
+
+
+        }
+        if (s.equals("bungeecord:kitchange")){
+            ByteArrayDataInput in = ByteStreams.newDataInput(bytes);
+            in.readUTF();
+            String playertogive = in.readUTF();
+            UUID playeruuid = UUID.fromString(playertogive);
+            if (Bukkit.getPlayer(playeruuid) != null){
+                Player player1 = Bukkit.getPlayer(playeruuid);
+                if (Smasher.playerlanguage.containsKey(player.getUniqueId())) {
+                    if (Smasher.playerlanguage.get(player.getUniqueId()).equals("de")) {
+                        player1.sendMessage(ChatColor.RED + "Du kannst dein Kit nicht ändern während du in einer Runde bist!");
+                    } else if (Smasher.playerlanguage.get(player.getUniqueId()).equals("en")) {
+                        player1.sendMessage(ChatColor.RED + "You can't change your kit while being ingame!");
+                    }
+                } else {
+                    player1.sendMessage(ChatColor.RED + "Du kannst dein Kit nicht ändern während du in einer Runde bist!");
+                }
             }
 
 

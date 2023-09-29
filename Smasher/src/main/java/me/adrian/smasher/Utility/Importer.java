@@ -24,6 +24,7 @@ public class Importer {
         pluginManager.registerEvents(new PlayerDeathListener(), plugin);
         pluginManager.registerEvents(new BreakPlaceListener(), plugin);
         pluginManager.registerEvents(new PlayerInteractListener(), plugin);
+        pluginManager.registerEvents(new PlayerKillListener(), plugin);
 
 
 
@@ -37,6 +38,8 @@ public class Importer {
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:kit");
         main.getServer().getMessenger().registerIncomingPluginChannel(main, "bungeecord:kit",new PluginMessageListener());
+
+        main.getServer().getMessenger().registerIncomingPluginChannel(main, "bungeecord:kitchange",new PluginMessageListener());
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(Smasher.main, "between:smasherlobby");
 
