@@ -100,6 +100,7 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
         getProxy().registerChannel("bungeecord:lobby");
         getProxy().registerChannel("bungeecord:kitchange");
         getProxy().registerChannel("bungeecord:joinme");
+        getProxy().registerChannel("bungeecord:wartung");
         getProxy().getPluginManager().registerListener(this, this);
         getProxy().getPluginManager().registerCommand(this, new lobbycommand());
         getProxy().getPluginManager().registerCommand(this, new kitcommand());
@@ -210,6 +211,18 @@ public final class ServerAdrianBungee extends Plugin implements Listener {
                     textComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/skymining"));
                     p.sendMessage(textComponent);
                 }
+
+            }
+            if (event.getTag().equals("bungeecord:wartung")){
+                ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
+                String server = in.readUTF();
+                ServerInfo lobby = getProxy().getServerInfo("lobby");
+                for (ProxiedPlayer p: getProxy().getPlayers()){
+                    if (p.getServer().getInfo().getName().equalsIgnoreCase(server)){
+                        p.connect(lobby);
+                    }
+                }
+
 
             }
 
