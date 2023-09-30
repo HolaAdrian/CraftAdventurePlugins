@@ -42,7 +42,6 @@ public class ItemGetter {
         ItemMeta bwm = bw.getItemMeta();
 
         bwm.setDisplayName(ChatColor.GOLD + "Spammer-Bow");
-        bwm.addEnchant(Enchantment.ARROW_KNOCKBACK, 1, true);
         bwm.addEnchant(Enchantment.ARROW_INFINITE, 1, true);
         bwm.setUnbreakable(true);
 

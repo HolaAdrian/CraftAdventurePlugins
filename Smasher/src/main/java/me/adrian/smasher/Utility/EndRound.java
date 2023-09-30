@@ -9,6 +9,7 @@ import me.adrian.smasher.Smasher;
 import me.adrian.smasher.commands.LobbyCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import java.io.ByteArrayOutputStream;
@@ -26,12 +27,15 @@ public class EndRound {
     public static void endRound(Player player){
 
         for (Player p: Bukkit.getOnlinePlayers()){
+
             Smasher.sendServer(p, "lobby");
 
             p.setGameMode(GameMode.SURVIVAL);
             p.setMaxHealth(20);
             p.setHealth(10);
         }
+
+        SayLobbyEndRound();
 
         Smasher.lives.clear();
         Smasher.playingPlayers.clear();
@@ -41,25 +45,6 @@ public class EndRound {
         Respawner.lastonestanding = "Niemand";
         Smasher.playersalive = 0;
         Smasher.deathPlayers.clear();
-
-        for (Player p: Bukkit.getOnlinePlayers()){
-
-
-
-            if (Smasher.playerlanguage.containsKey(p.getUniqueId())) {
-                if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")) {
-                    p.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline oder in Wartungsarbeiten!");
-                } else if (Smasher.playerlanguage.get(p.getUniqueId()).equals("en")) {
-                    p.kickPlayer("The Lobby couldn't be reached! It most likely is offline or under maintenance!");
-                }
-            } else {
-                p.kickPlayer("Die Lobby konnte nicht verbunden werden! Sie ist wahrscheinlich offline oder in Wartungsarbeiten!");
-            }
-
-
-
-
-        }
 
         }
 

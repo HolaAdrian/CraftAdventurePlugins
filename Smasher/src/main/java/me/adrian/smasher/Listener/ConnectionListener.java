@@ -107,6 +107,7 @@ public class ConnectionListener implements Listener {
 
 
             for (Player p: Bukkit.getOnlinePlayers()){
+                p.playSound(p.getLocation(), Sound.ITEM_GOAT_HORN_SOUND_0, 1.0F, 1.0F);
                 if (Smasher.playerlanguage.containsKey(p.getUniqueId())){
                     if (Smasher.playerlanguage.get(p.getUniqueId()).equals("de")){
                         p.sendMessage(ChatColor.GOLD + lastonestanding + " hat diese Runde smasher gewonnen!");

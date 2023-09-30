@@ -26,7 +26,7 @@ public class PlayerDeathListener implements Listener {
         Player player = event.getPlayer();
         Respawner.TeleportAsynch(player);
         Respawner.RemoveLife(player);
-        player.setHealth(20);
+        player.setHealth(player.getMaxHealth());
 
         if (event.getPlayer().getKiller() != null){
             if (event.getPlayer().getKiller() instanceof Player){
