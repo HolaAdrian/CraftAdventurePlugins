@@ -10,10 +10,10 @@ C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\s
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\SkyMining.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\commands\restore.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\NoSuffocation.java
-C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\GoodVillagerTradeListener.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\ConnectionListener.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\commands\trashCommand.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\NoShitListener.java
+C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\SetIslandListener.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\NoFoodListener.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\NoVoidListener.java
 C:\Users\Adrian\IdeaProjects\craftadventures\SkyMining\src\main\java\me\adrian\skymining\listeners\PluginMessageLIstener.java

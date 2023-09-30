@@ -5,9 +5,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -15,11 +17,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class ParkourListener implements Listener {
+    Location spawn = new Location(Bukkit.getWorld("world"), 0.5, 102, -0.5, 0, 0);
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
 
-        Location spawn = new Location(Bukkit.getWorld("world"), 0.5, 102, -0.5, 0, 0);
+
 
 
         if (event.getAction().equals(Action.PHYSICAL)){
@@ -134,5 +137,16 @@ public class ParkourListener implements Listener {
         }
 
 
-
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        event.setCancelled(true);
+        Player player = event.getPlayer();
+        if (SkyMining.lastisland.containsKey(player.getUniqueId())){
+            Location location = SkyMining.lastisland.get(player.getUniqueId());
+            player.teleport(location);
+        }
+        else {
+            player.teleport(spawn);
+        }
     }
+}

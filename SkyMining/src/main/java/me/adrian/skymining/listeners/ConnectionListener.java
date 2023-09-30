@@ -14,6 +14,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Objective;
 
 public class ConnectionListener implements Listener {
@@ -39,14 +41,14 @@ public class ConnectionListener implements Listener {
                 if (SkyMining.playerlanguage.containsKey(p.getUniqueId())){
                     String s = SkyMining.playerlanguage.get(p.getUniqueId());
                     if (s.equals("de")){
-                        p.sendMessage(ChatColor.GOLD + event.getPlayer().getName() + ChatColor.RED + " spielt nichtmehr Sky Mine auf Craftadventure.de");
+                        p.sendMessage(ChatColor.GOLD + event.getPlayer().getName() + ChatColor.RED + " spielt nichtmehr Sky Mining auf Craftadventure.de");
                     }
                     else if (s.equals("en")){
                         p.sendMessage(ChatColor.GOLD + event.getPlayer().getName() + ChatColor.RED + " is no longer playing Sky Mine on Craftadventure.de");
                     }
                 }
                 else {
-                    p.sendMessage(ChatColor.GOLD + event.getPlayer().getName() + ChatColor.RED + " spielt nichtmehr Sky Mine auf Craftadventure.de");
+                    p.sendMessage(ChatColor.GOLD + event.getPlayer().getName() + ChatColor.RED + " spielt nichtmehr Sky Mining auf Craftadventure.de");
                 }
             }
         }
@@ -64,6 +66,7 @@ public class ConnectionListener implements Listener {
 
         Player player = event.getPlayer();
         player.getInventory().setHeldItemSlot(0);
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 999999 ,1, true));
 
         SetScoreboard.setScoreboard(player);
 
@@ -140,14 +143,14 @@ public class ConnectionListener implements Listener {
                     if (SkyMining.playerlanguage.containsKey(p.getUniqueId())){
                         String s = SkyMining.playerlanguage.get(p.getUniqueId());
                         if (s.equals("de")){
-                            p.sendMessage(ChatColor.GOLD + name + ChatColor.GREEN + " spielt jetzt Sky Mine auf Craftadventure.de");
+                            p.sendMessage(ChatColor.GOLD + name + ChatColor.GREEN + " spielt jetzt Sky Mining auf Craftadventure.de");
                         }
                         else if (s.equals("en")){
                             p.sendMessage(ChatColor.GOLD + name + ChatColor.GREEN + " is now playing on Craftadventure.de");
                         }
                     }
                     else {
-                        p.sendMessage(ChatColor.GOLD + name + ChatColor.GREEN + " spielt jetzt Sky Mine auf Craftadventure.de");
+                        p.sendMessage(ChatColor.GOLD + name + ChatColor.GREEN + " spielt jetzt Sky Mining auf Craftadventure.de");
                     }
                 }
 

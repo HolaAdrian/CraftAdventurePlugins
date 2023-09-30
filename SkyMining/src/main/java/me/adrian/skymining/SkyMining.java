@@ -3,11 +3,9 @@ package me.adrian.skymining;
 import me.adrian.skymining.Utility.SaveManager;
 import me.adrian.skymining.commands.*;
 import me.adrian.skymining.listeners.*;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Chunk;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.UUID;
 
 public final class SkyMining extends JavaPlugin{
@@ -43,6 +42,8 @@ public final class SkyMining extends JavaPlugin{
 
     public static HashMap<UUID, Boolean> pvpon = new HashMap<>();
 
+    public static HashMap<UUID, Location> lastisland = new HashMap<>();
+
 
 
 
@@ -60,6 +61,7 @@ public final class SkyMining extends JavaPlugin{
         pluginManager.registerEvents(new NoSuffocation(), plugin);
         pluginManager.registerEvents(new DeathDropListener(), plugin);
         pluginManager.registerEvents(new YesNoPvpListener(), plugin);
+        pluginManager.registerEvents(new SetIslandListener(), plugin);
     }
 
 
@@ -69,6 +71,10 @@ public final class SkyMining extends JavaPlugin{
 
     @Override
     public void onEnable() {
+
+        BuildDestroyListener.AddBlocks();
+
+
         if (getConfig().isSet("new")){
             SaveManager.LoadAll(getConfig());
         }

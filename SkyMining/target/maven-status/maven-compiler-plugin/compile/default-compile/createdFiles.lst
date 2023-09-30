@@ -20,11 +20,11 @@ me\adrian\skymining\listeners\BuildDestroyListener.class
 me\adrian\skymining\listeners\ConnectionListener$2.class
 me\adrian\skymining\commands\PvpCommand.class
 me\adrian\skymining\listeners\DeathDropListener.class
+me\adrian\skymining\listeners\SetIslandListener.class
 me\adrian\skymining\listeners\HasteListener.class
 me\adrian\skymining\commands\trashCommand.class
 me\adrian\skymining\Utility\SafeManager.class
 me\adrian\skymining\listeners\NoFoodListener.class
-me\adrian\skymining\listeners\GoodVillagerTradeListener.class
 me\adrian\skymining\listeners\NoSuffocation.class
 me\adrian\skymining\listeners\YesNoPvpListener.class
 me\adrian\skymining\Utility\Creator.class
