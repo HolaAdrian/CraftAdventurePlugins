@@ -1,17 +1,16 @@
 package me.adrian.craftadventurelobby.Utility;
 
 import me.adrian.craftadventurelobby.Lobby;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
+
+import static org.bukkit.Sound.ENTITY_ARROW_HIT_PLAYER;
 
 public class StattMatchmaking {
 
@@ -83,6 +82,9 @@ public class StattMatchmaking {
                             if (countdown < 1){
 
                                 for (UUID uuid : mp) {
+                                    if (Bukkit.getPlayer(uuid) == null){
+                                        return;
+                                    }
                                     Player player1 = Bukkit.getPlayer(uuid);
                                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                                     DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);
@@ -101,6 +103,20 @@ public class StattMatchmaking {
                                 countdown = 30;
                                 mp.clear();
                                 Bukkit.getScheduler().cancelTask(SCHEDU);
+                            }
+
+
+                            if (countdown < 6){
+
+                                for (UUID uuid: mp){
+                                    if (Bukkit.getPlayer(uuid) == null){
+                                        return;
+                                    }
+                                    Player player1 = Bukkit.getPlayer(uuid);
+                                    player1.playSound(player1.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1.0F, 1.0F);
+
+
+                                }
                             }
 
 

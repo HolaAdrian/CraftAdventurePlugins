@@ -26,6 +26,8 @@ public class Importer {
         main.getServer().getMessenger().registerIncomingPluginChannel(main,"bungeecord:kitchange",new PluginMessagelistener());
 
         main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:lobby");
+
+        main.getServer().getMessenger().registerOutgoingPluginChannel(main, "bungeecord:wartung");
     }
 
     public static void ImportListeners(Plugin plugin, PluginManager pluginManager){

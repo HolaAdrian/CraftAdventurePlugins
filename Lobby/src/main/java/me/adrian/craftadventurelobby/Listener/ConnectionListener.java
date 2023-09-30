@@ -19,7 +19,7 @@ public class ConnectionListener implements Listener {
 
     Integer times = 0;
 
-    private static Integer SCHEDU;
+
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
@@ -28,6 +28,7 @@ public class ConnectionListener implements Listener {
         String name = event.getPlayer().getName();
 
         Player player = event.getPlayer();
+
         player.getInventory().setHeldItemSlot(1);
         player.getInventory().clear();
 

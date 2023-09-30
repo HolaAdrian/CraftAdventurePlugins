@@ -117,6 +117,9 @@ public class WartungsarbeitenCommand implements CommandExecutor, TabCompleter {
             if (strings[0].equalsIgnoreCase("Smasher")){
                 if (Lobby.smasherwartung == true){
                     Lobby.smasherwartung = false;
+
+
+
                     if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
                         if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")) {
                             player.sendMessage(ChatColor.GREEN + "Smasher ist nun nichtmehr im Wartungsmodus!");
@@ -129,6 +132,10 @@ public class WartungsarbeitenCommand implements CommandExecutor, TabCompleter {
                 }
                 else {
                     Lobby.smasherwartung = true;
+                    Lobby.smasherrunning = false;
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                    out.writeUTF("smasher");
+                    Lobby.main.getServer().sendPluginMessage(Lobby.main, "bungeecord:wartung", out.toByteArray());
                     for (UUID uuid: StattMatchmaking.mp){
                         if (Bukkit.getPlayer(uuid) != null){
                             Player player1 = Bukkit.getPlayer(uuid);
@@ -166,6 +173,9 @@ public class WartungsarbeitenCommand implements CommandExecutor, TabCompleter {
                 }
                 else {
                     Lobby.skyminingwartung = true;
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                    out.writeUTF("skyminer");
+                    Lobby.main.getServer().sendPluginMessage(Lobby.main, "bungeecord:wartung", out.toByteArray());
                     if (Lobby.playerlanguage.containsKey(player.getUniqueId())) {
                         if (Lobby.playerlanguage.get(player.getUniqueId()).equals("de")) {
                             player.sendMessage(ChatColor.GREEN + "Sky Mining ist nun im Wartungsmodus!");
