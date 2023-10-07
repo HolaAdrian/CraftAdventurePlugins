@@ -1,0 +1,19 @@
+name: LifeStealHalloween
+version: '${project.version}'
+main: de.adrian.lifestealhalloween.LifeStealHalloween
+api-version: '1.19'
+commands:
+  setlives:
+    description: Set someones lives!
+    aliases:
+      - live
+      - lives
+  config:
+    description: Save or load the config
+  withdraw:
+    description: Withdraw hearts to give them to other players!
+  lobby:
+    description: Go to the lobby
+    aliases:
+      - l
+      - hub

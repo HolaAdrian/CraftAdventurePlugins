@@ -1,0 +1,17 @@
+de\adrian\lifestealhalloween\utils\Creator.class
+de\adrian\lifestealhalloween\utils\SafeManager.class
+de\adrian\lifestealhalloween\commands\SetLivesCommand.class
+de\adrian\lifestealhalloween\listeners\PlayerDeathListener.class
+de\adrian\lifestealhalloween\listeners\RespawnListener.class
+de\adrian\lifestealhalloween\commands\WithdrawCommand.class
+de\adrian\lifestealhalloween\utils\Datas.class
+de\adrian\lifestealhalloween\utils\ItemGetter.class
+de\adrian\lifestealhalloween\listeners\BreakPlaceListener.class
+de\adrian\lifestealhalloween\listeners\ConnectionListener.class
+de\adrian\lifestealhalloween\commands\LobbyCommand.class
+de\adrian\lifestealhalloween\listeners\LanguageCLickListener.class
+de\adrian\lifestealhalloween\utils\Importer.class
+de\adrian\lifestealhalloween\listeners\PluginMessageListener.class
+de\adrian\lifestealhalloween\commands\ConfigCommand.class
+de\adrian\lifestealhalloween\LifeStealHalloween.class
+de\adrian\lifestealhalloween\listeners\HeartLitstener.class

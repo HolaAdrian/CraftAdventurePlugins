@@ -1,0 +1,3 @@
+name: ServerAdrianBungee
+version: '1.0'
+main: me.adrian.serveradrianbungee.ServerAdrianBungee

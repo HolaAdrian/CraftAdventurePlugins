@@ -1,0 +1,22 @@
+name: Smasher
+version: '${project.version}'
+main: me.adrian.smasher.Smasher
+api-version: '1.19'
+commands:
+  lives:
+    aliases:
+      - setlives
+    permission: smasher.setlives
+  lobby:
+    description: Teleport to the lobby
+    aliases:
+      - l
+      - hub
+  discord:
+    description: Go to our discord
+    aliases:
+      - dc
+  help:
+    description: Get help to your game mode
+
+

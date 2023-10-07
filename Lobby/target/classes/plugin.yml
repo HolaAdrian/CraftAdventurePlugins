@@ -1,0 +1,29 @@
+name: Lobby
+version: '1.0'
+main: me.adrian.craftadventurelobby.Lobby
+api-version: '1.19'
+commands:
+  spawn:
+    description: Teleport to the lobby's spawn
+    aliases:
+      - s
+  setspawn:
+    description: Set the Lobby's spawn
+  smasherresume:
+    aliases:
+      - resumesmasher
+    permission: smasher.resume
+  discord:
+    aliases:
+      - dc
+    description: Go to our discord
+  wartung:
+    description: Set's the Server or an gamemode in locked mode!
+    aliases:
+      - wartungsmodus
+  start:
+    description: Set the Smasher cooldown to 5 seconds!
+  ban:
+    description: Ban/Tempban an player
+    aliases:
+      - tempban
