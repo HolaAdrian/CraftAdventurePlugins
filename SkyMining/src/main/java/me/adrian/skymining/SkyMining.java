@@ -84,7 +84,7 @@ public final class SkyMining extends JavaPlugin{
             throw new RuntimeException(e);
         }
 
-        BuildDestroyListener.AddBlocks();
+
 
         SendDiscordWebhook("Sky Mining Server/Plugin wurde gestartet!");
 

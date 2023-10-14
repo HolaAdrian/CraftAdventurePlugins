@@ -48,8 +48,11 @@ public class StattMatchmaking {
 
                 } else if (mp.size() > 1) {
                     if (SettingCountdown != null){
-                        countdown = SettingCountdown;
-                        SettingCountdown = null;
+                        if (countdown > SettingCountdown){
+                            countdown = SettingCountdown;
+                            SettingCountdown = null;
+                        }
+
                     }
 
                     countdown--;

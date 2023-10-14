@@ -36,6 +36,10 @@ public class VillagerLobbyClickListener implements Listener {
                 }
                 Lobby.sendServer(player, "skyminer");
             }
+            if (villager.getCustomName().contains("Halloween")){
+                Player player = event.getPlayer();
+                Lobby.sendServer(player, "lifesteal");
+            }
             if (villager.getCustomName().contains("Smasher")){
                 Player player = event.getPlayer();
                 if (Lobby.smasherwartung == true){
