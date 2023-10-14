@@ -7,6 +7,7 @@ import me.adrian.skymining.Utility.SetScoreboard;
 import me.adrian.skymining.Utility.UpdateHaste;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -65,6 +66,7 @@ public class ConnectionListener implements Listener {
 
 
         Player player = event.getPlayer();
+        player.setGameMode(GameMode.ADVENTURE);
         player.getInventory().setHeldItemSlot(0);
         player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 999999 ,1, true));
 
