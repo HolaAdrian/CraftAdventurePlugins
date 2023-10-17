@@ -1,0 +1,4 @@
+name: CombatLogLifeSteal
+version: '${project.version}'
+main: de.adrian.combatloglifesteal.CombatLogLifeSteal
+api-version: '1.19'

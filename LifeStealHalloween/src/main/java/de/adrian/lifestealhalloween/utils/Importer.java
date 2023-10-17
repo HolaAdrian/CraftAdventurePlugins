@@ -8,6 +8,7 @@ import de.adrian.lifestealhalloween.commands.WithdrawCommand;
 import de.adrian.lifestealhalloween.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.permissions.Permission;
@@ -66,12 +67,14 @@ public class Importer {
     }
 
     private static void ImportRecipes(){
+        NamespacedKey key = new NamespacedKey(LifeStealHalloween.main, "heart_recipe");
         ItemStack heart = ItemGetter.Heart(1);
-        ShapedRecipe heartrecipe = new ShapedRecipe(heart);
-        heartrecipe.shape("NGN","DID", "NGN");
-        heartrecipe.setIngredient('G', Material.GOLD_BLOCK);
+        ShapedRecipe heartrecipe = new ShapedRecipe(key, heart);
+        heartrecipe.shape("CGC","GDG", "CGC");
+        heartrecipe.setIngredient('C', Material.CRYING_OBSIDIAN);
+        heartrecipe.setIngredient('G', Material.GOLDEN_APPLE);
         heartrecipe.setIngredient('D', Material.DIAMOND_BLOCK);
-        heartrecipe.setIngredient('I', Material.NETHERITE_INGOT);
+
         Bukkit.addRecipe(heartrecipe);
     }
 

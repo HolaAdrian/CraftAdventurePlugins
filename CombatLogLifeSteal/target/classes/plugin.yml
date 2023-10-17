@@ -1,0 +1,4 @@
+name: CombatLogLifeSteal
+version: '1.0'
+main: de.adrian.combatloglifesteal.CombatLogLifeSteal
+api-version: '1.19'
